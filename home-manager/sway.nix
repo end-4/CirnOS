@@ -7,7 +7,7 @@ in {
     config = {
       input = {
         "*" =  {
-          xkb_layout = "hu";
+          xkb_layout = "en";
           natural_scroll = "disabled";
         };
       };

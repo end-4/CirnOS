@@ -13,19 +13,10 @@
     (import ./colorscript.nix { inherit pkgs; })
 
     # gui
-    obsidian
     (mpv.override { scripts = [mpvScripts.mpris]; })
-    libreoffice
-    spotify
-    caprine-bin
     d-spy
-    easyeffects
+    kolourpaint
     github-desktop
-    gimp
-    transmission_4-gtk
-    discord
-    bottles
-    teams-for-linux
     icon-library
     dconf-editor
     figma-linux
@@ -48,7 +39,7 @@
     glib
 
     # hyprland
-    wl-gammactl
+    wlsunset
     wl-clipboard
     wf-recorder
     hyprpicker
@@ -59,15 +50,6 @@
     pavucontrol
     brightnessctl
     swww
-
-    # fun
-    glow
-    slides
-    skate
-    yabridge
-    yabridgectl
-    wine-staging
-    distrobox
 
     # langs
     nodejs
