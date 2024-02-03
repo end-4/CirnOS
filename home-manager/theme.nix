@@ -20,8 +20,8 @@ let
     "Mononoki"
   ]; });
 
-  cursor-theme = "Qogir";
-  cursor-package = pkgs.qogir-icon-theme;
+  cursor-theme = "Bibata-Modern-Classic";
+  cursor-package = pkgs.bibata-cursors;
 in
 {
   home = {
@@ -30,6 +30,8 @@ in
       font-awesome
       nerdfonts
       moreWaita
+      bibata-cursors
+      # morewaita-icon-theme
       # papirus-icon-theme
       # qogir-icon-theme
       # whitesur-icon-theme
@@ -75,7 +77,7 @@ in
 
   gtk = {
     enable = true;
-    font.name = "Ubuntu Nerd Font";
+    font.name = "Rubik";
     theme.name = gtk-theme;
     cursorTheme = {
       name = cursor-theme;

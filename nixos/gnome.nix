@@ -12,13 +12,15 @@
     systemPackages = with pkgs; [
       gnome-extension-manager
       nautilus-open-any-terminal
-      qogir-icon-theme
+      morewaita-icon-theme
+      bibata-cursors
+      rubik
       gnome.nautilus-python
     ];
 
     gnome.excludePackages = (with pkgs; [
-      gnome-text-editor
-      gnome-console
+      # gnome-text-editor
+      # gnome-console
       gnome-photos
       gnome-tour
       gnome-connections
@@ -30,7 +32,7 @@
       epiphany # web browser
       geary # email reader
       evince # document viewer
-      gnome-characters
+      # gnome-characters
       totem # video player
       tali # poker game
       iagno # go game
@@ -41,7 +43,7 @@
       gnome-initial-setup
       gnome-shell-extensions
       gnome-maps
-      gnome-font-viewer
+      # gnome-font-viewer
     ]);
   };
 
@@ -62,7 +64,7 @@
           tap-to-click = true;
         };
         "org/gnome/desktop/interface" = {
-          cursor-theme = "Qogir";
+          cursor-theme = "Bibata-Modern-Classic";
         };
       };
     }];

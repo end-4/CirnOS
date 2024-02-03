@@ -20,22 +20,17 @@
   };
 
   # virtualisation
-  programs.virt-manager.enable = true;
-  virtualisation = {
-    podman.enable = true;
-    libvirtd.enable = true;
-  };
+  # programs.virt-manager.enable = true;
+  # virtualisation = {
+  #   podman.enable = true;
+  #   libvirtd.enable = true;
+  # };
 
   # dconf
   programs.dconf.enable = true;
 
   # packages
-  environment.systemPackages = with pkgs; [
-    home-manager
-    neovim
-    git
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ curl fish git home-manager wget ];
 
   # services
   services = {
@@ -44,7 +39,7 @@
       excludePackages = [ pkgs.xterm ];
     };
     printing.enable = true;
-    flatpak.enable = true;
+    # flatpak.enable = true;
   };
 
   # logind
@@ -56,7 +51,10 @@
 
   # kde connect
   networking.firewall = rec {
-    allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
+    allowedTCPPortRanges = [{
+      from = 1714;
+      to = 1764;
+    }];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 
@@ -64,19 +62,13 @@
   users.users.${username} = {
     isNormalUser = true;
     initialPassword = username;
-    extraGroups = [
-      "nixosvmtest"
-      "networkmanager"
-      "wheel"
-      "audio"
-      "video"
-      "libvirtd"
-    ];
+    extraGroups =
+      [ "nixosvmtest" "networkmanager" "wheel" "audio" "video" "libvirtd" ];
   };
 
   # network
   networking = {
-    hostName = "nixos";
+    hostName = "CirnOS";
     networkmanager.enable = true;
   };
 
@@ -90,23 +82,27 @@
   # bootloader
   boot = {
     tmp.cleanOnBoot = true;
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = [ "btrfs" "ext4" "fat32" "ntfs" ];
     loader = {
-      timeout = 2;
-      systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
       efi.canTouchEfiVariables = true;
     };
-    plymouth = rec {
-      enable = true;
-      # black_hud circle_hud cross_hud square_hud
-      # circuit connect cuts_alt seal_2 seal_3
-      theme = "circle_hud";
-      themePackages = with pkgs; [(
-        adi1090x-plymouth-themes.override {
-          selected_themes = [ theme ];
-        }
-      )];
-    };
+    # Normally I wouldn't use plymouth but this looks cool af
+    # plymouth = rec {
+    #   enable = true;
+    #   # black_hud circle_hud cross_hud square_hud
+    #   # circuit connect cuts_alt seal_2 seal_3
+    #   theme = "circle_hud";
+    #   themePackages = with pkgs;
+    #     [
+    #       (adi1090x-plymouth-themes.override { selected_themes = [ theme ]; })
+    #     ];
+    # };
   };
 
   system.stateVersion = "23.05";

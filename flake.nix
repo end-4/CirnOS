@@ -34,7 +34,7 @@
 
   outputs = { home-manager, nixpkgs, ... }@inputs:
   let
-    username = "demeter";
+    username = "end";
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;

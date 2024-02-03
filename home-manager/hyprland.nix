@@ -26,207 +26,325 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland;
-    systemd.enable = true;
-    xwayland.enable = true;
-    # plugins = with plugins; [ hyprbars borderspp ];
-
     settings = {
-      exec-once = [
-        "ags -b hypr"
-        "hyprctl setcursor Qogir 24"
-        "transmission-gtk"
+      env = [
+        "GTK_IM_MODULE, fcitx"
+        "QT_IM_MODULE, fcitx"
+        "XMODIFIERS, @im=fcitx"
+        "QT_QPA_PLATFORM, wayland"
+        "QT_QPA_PLATFORMTHEME, qt5ct"
+        "QT_STYLE_OVERRIDE,kvantum"
+        "WLR_NO_HARDWARE_CURSORS, 1"
       ];
-
-      monitor = [
-        # "eDP-1, 1920x1080, 0x0, 1"
-        # "HDMI-A-1, 2560x1440, 1920x0, 1"
-        ",preferred,auto,1"
+      monitor = [ ",preferred,auto,1" ];
+      "exec-once" = [
+        "waybar"
+        "swww kill; swww init"
+        "fcitx5"
+        "wl-paste --type text --watch cliphist store"
+        "wl-paste --type image --watch cliphist store"
+        "hyprctl setcursor Bibata-Modern-Classic 24"
       ];
-
       general = {
+        gaps_in = 4;
+        gaps_out = 5;
+        gaps_workspaces = 50;
+        border_size = 1;
         layout = "dwindle";
         resize_on_border = true;
+        "col.active_border" = "rgba(471868FF)";
+        "col.inactive_border" = "rgba(4f4256CC)";
       };
-
-      misc = {
-        layers_hog_keyboard_focus = false;
-        disable_splash_rendering = true;
-        force_default_wallpaper = 0;
-      };
-
-      input = {
-        kb_layout = "hu";
-        kb_model = "pc104";
-        follow_mouse = 1;
-        touchpad = {
-          natural_scroll = "yes";
-          disable_while_typing = true;
-          drag_lock = true;
-        };
-        sensitivity = 0;
-        float_switch_override_focus = 2;
-      };
-
-      binds = {
-        allow_workspace_cycles = true;
-      };
-
       dwindle = {
-        pseudotile = "yes";
-        preserve_split = "yes";
-        # no_gaps_when_only = "yes";
+        preserve_split = true;
+        smart_resizing = false;
       };
-
       gestures = {
         workspace_swipe = true;
-        workspace_swipe_forever = true;
-        workspace_swipe_numbered = true;
+        workspace_swipe_distance = 700;
+        workspace_swipe_fingers = 4;
+        workspace_swipe_cancel_ratio = 0.2;
+        workspace_swipe_min_speed_to_force = 5;
+        workspace_swipe_direction_lock = true;
+        workspace_swipe_direction_lock_threshold = 10;
+        workspace_swipe_create_new = true;
       };
+      binds = { scroll_event_delay = 0; };
+      input = {
+        # Keyboard: Add a layout and uncomment kb_options for Win+Space switching shortcut
+        kb_layout = "us";
+        # kb_options = grp:win_space_toggle;
+        numlock_by_default = true;
+        repeat_delay = 250;
+        repeat_rate = 35;
 
-      windowrule = let
-        f = regex: "float, ^(${regex})$";
-      in [
-		(f "org.gnome.Calculator")
-		(f "org.gnome.Nautilus")
-		(f "pavucontrol")
-		(f "nm-connection-editor")
-		(f "blueberry.py")
-		(f "org.gnome.Settings")
-		(f "org.gnome.design.Palette")
-		(f "Color Picker")
-		(f "xdg-desktop-portal")
-		(f "xdg-desktop-portal-gnome")
-		(f "transmission-gtk")
-		(f "com.github.Aylur.ags")
-		"workspace 7, title:Spotify"
-      ];
+        touchpad = {
+          natural_scroll = true;
+          disable_while_typing = true;
+          clickfinger_behavior = true;
+          scroll_factor = 0.5;
+        };
 
-      bind = let
-        binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
-        mvfocus = binding "SUPER" "movefocus";
-        ws = binding "SUPER" "workspace";
-        resizeactive = binding "SUPER CTRL" "resizeactive";
-        mvactive = binding "SUPER ALT" "moveactive";
-        mvtows = binding "SUPER SHIFT" "movetoworkspace";
-        e = "exec, ags -b hypr";
-        arr = [1 2 3 4 5 6 7 8 9];
-        yt = pkgs.writeShellScriptBin "yt" ''
-            notify-send "Opening video" "$(wl-paste)"
-            mpv "$(wl-paste)"
-        '';
-      in [
-        "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
-        "SUPER, R,       ${e} -t applauncher"
-        ", XF86PowerOff, ${e} -t powermenu"
-        "SUPER, Tab,     ${e} -t overview"
-        ", XF86Launch4,  ${e} -r 'recorder.start()'"
-        ",Print,         ${e} -r 'recorder.screenshot()'"
-        "SHIFT,Print,    ${e} -r 'recorder.screenshot(true)'"
-        "SUPER, Return, exec, xterm" # xterm is a symlink, not actually xterm
-        "SUPER, W, exec, firefox"
-        "SUPER, E, exec, wezterm -e lf"
-
-        # youtube
-        ", XF86Launch1,  exec, ${yt}/bin/yt"
-
-        "ALT, Tab, focuscurrentorlast"
-        "CTRL ALT, Delete, exit"
-        "ALT, Q, killactive"
-        "SUPER, F, togglefloating"
-        "SUPER, G, fullscreen"
-        "SUPER, O, fakefullscreen"
-        "SUPER, P, togglesplit"
-
-        (mvfocus "k" "u")
-        (mvfocus "j" "d")
-        (mvfocus "l" "r")
-        (mvfocus "h" "l")
-        (ws "left" "e-1")
-        (ws "right" "e+1")
-        (mvtows "left" "e-1")
-        (mvtows "right" "e+1")
-        (resizeactive "k" "0 -20")
-        (resizeactive "j" "0 20")
-        (resizeactive "l" "20 0")
-        (resizeactive "h" "-20 0")
-        (mvactive "k" "0 -20")
-        (mvactive "j" "0 20")
-        (mvactive "l" "20 0")
-        (mvactive "h" "-20 0")
-      ]
-      ++ (map (i: ws (toString i) (toString i)) arr)
-      ++ (map (i: mvtows (toString i) (toString i)) arr);
-
-      bindle = let e = "exec, ags -b hypr -r"; in [
-        ",XF86MonBrightnessUp,   ${e} 'brightness.screen += 0.05; indicator.display()'"
-        ",XF86MonBrightnessDown, ${e} 'brightness.screen -= 0.05; indicator.display()'"
-        ",XF86KbdBrightnessUp,   ${e} 'brightness.kbd++; indicator.kbd()'"
-        ",XF86KbdBrightnessDown, ${e} 'brightness.kbd--; indicator.kbd()'"
-        ",XF86AudioRaiseVolume,  ${e} 'audio.speaker.volume += 0.05; indicator.speaker()'"
-        ",XF86AudioLowerVolume,  ${e} 'audio.speaker.volume -= 0.05; indicator.speaker()'"
-      ];
-
-      bindl = let e = "exec, ags -b hypr -r"; in [
-        ",XF86AudioPlay,    ${e} 'mpris?.playPause()'"
-        ",XF86AudioStop,    ${e} 'mpris?.stop()'"
-        ",XF86AudioPause,   ${e} 'mpris?.pause()'"
-        ",XF86AudioPrev,    ${e} 'mpris?.previous()'"
-        ",XF86AudioNext,    ${e} 'mpris?.next()'"
-        ",XF86AudioMicMute, ${e} 'audio.microphone.isMuted = !audio.microphone.isMuted'"
-      ];
-
-      bindm = [
-        "SUPER, mouse:273, resizewindow"
-        "SUPER, mouse:272, movewindow"
-      ];
-
+        # special_fallthrough = true   # only in new hyprland versions. but they're hella fucked
+        follow_mouse = 1;
+      };
       decoration = {
-        drop_shadow = "yes";
-        shadow_range = 8;
-        shadow_render_power = 2;
-        "col.shadow" = "rgba(00000044)";
-
-        dim_inactive = false;
+        rounding = 30;
 
         blur = {
           enabled = true;
-          size = 8;
-          passes = 3;
-          new_optimizations = "on";
-          noise = 0.01;
-          contrast = 0.9;
-          brightness = 0.8;
+          xray = true;
+          special = false;
+          new_optimizations = true;
+          size = 5;
+          passes = 4;
+          brightness = 1;
+          noise = 1.0e-2;
+          contrast = 1;
         };
-      };
+        # Shadow
+        drop_shadow = false;
+        shadow_ignore_window = true;
+        shadow_range = 20;
+        shadow_offset = "0 2";
+        shadow_render_power = 2;
+        "col.shadow" = "rgba(0000001A)";
 
+        # Dim
+        dim_inactive = false;
+        dim_strength = 0.1;
+        dim_special = 0;
+      };
       animations = {
-        enabled = "yes";
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        enabled = true;
+        bezier = [
+          "md3_decel, 0.05, 0.7, 0.1, 1"
+          "md3_accel, 0.3, 0, 0.8, 0.15"
+          "overshot, 0.05, 0.9, 0.1, 1.1"
+          "crazyshot, 0.1, 1.5, 0.76, 0.92"
+          "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
+          "fluent_decel, 0.1, 1, 0, 1"
+          "easeInOutCirc, 0.85, 0, 0.15, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+          "easeOutExpo, 0.16, 1, 0.3, 1"
+        ];
         animation = [
-          "windows, 1, 5, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
+          "windows, 1, 3, md3_decel, popin 60%"
           "border, 1, 10, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
+          "fade, 1, 2.5, md3_decel"
+          # "workspaces, 1, 3.5, md3_decel, slide"
+          "workspaces, 1, 7, fluent_decel, slide"
+          # "workspaces, 1, 7, fluent_decel, slidefade 15%"
+          # "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
+          "specialWorkspace, 1, 3, md3_decel, slidevert"
         ];
       };
+      misc = {
+        vfr = 1;
+        vrr = 1;
+        # layers_hog_mouse_focus = true;
+        focus_on_activate = true;
+        animate_manual_resizes = false;
+        animate_mouse_windowdragging = false;
+        enable_swallow = false;
+        swallow_regex = "(foot|kitty|allacritty|Alacritty)";
 
-      plugin = {
-        hyprbars = {
-          bar_color = "rgb(2a2a2a)";
-          bar_height = 28;
-          col_text = "rgba(ffffffdd)";
-          bar_text_size = 11;
-          bar_text_font = "Ubuntu Nerd Font";
-
-          buttons = {
-            button_size = 0;
-            "col.maximize" = "rgba(ffffff11)";
-            "col.close" = "rgba(ff111133)";
-          };
-        };
+        disable_hyprland_logo = true;
+        force_hypr_chan = true;
+        new_window_takes_over_fullscreen = 2;
       };
+      debug = {
+        # overlay = true;
+        # damage_tracking = 0;
+        # damage_blink = true;
+      };
+      bind =
+        let SLURP_COMMAND = "$(slurp -d -c eedcf5BB -b 4f425644 -s 00000000)";
+        in [
+          "Super, C, exec, codium --password-store=gnome"
+          "Super, T, exec, foot --override shell=fish"
+          "Super, E, exec, nautilus --new-window"
+          "Super+Alt, E, exec, thunar"
+          "Super, W, exec, firefox"
+          "Control+Super, W, exec, thorium-browser --ozone-platform-hint=wayland --gtk-version=4 --ignore-gpu-blocklist --enable-features=TouchpadOverscrollHistoryNavigation"
+          "Super, X, exec, gnome-text-editor --new-window"
+          "Super+Shift, W, exec, wps"
+          ''Super, I, exec, XDG_CURRENT_DESKTOP="gnome" gnome-control-center''
+          "Control+Super, V, exec, pavucontrol"
+          "Control+Shift, Escape, exec, gnome-system-monitor"
+          "Super, Period, exec, pkill fuzzel || ~/.local/bin/fuzzel-emoji"
+          "Super, Q, killactive, "
+          "Super+Alt, Space, togglefloating, "
+          "Shift+Super+Alt, Q, exec, hyprctl kill"
+          "Control+Shift+Alt, Delete, exec, pkill wlogout || wlogout -p layer-shell"
+          "Control+Shift+Alt+Super, Delete, exec, systemctl poweroff"
+          "Super+Shift+Alt, S, exec, grim -g ${SLURP_COMMAND} - | swappy -f -"
+          "Super+Shift, S, exec, grim -g ${SLURP_COMMAND} - | wl-copy"
+          "Super+Alt, R, exec, ~/.config/ags/scripts/record-script.sh"
+          "Control+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen"
+          "Super+Shift+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen-sound"
+          "Super+Shift, C, exec, hyprpicker -a"
+          "Super, V, exec, pkill fuzzel || cliphist list | fuzzel --no-fuzzy --dmenu | cliphist decode | wl-copy"
+          ''
+            Control+Super+Shift,S,exec,grim -g ${SLURP_COMMAND} "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"''
+          "Super, L, exec, swaylock"
+          "Super+Shift, L, exec, swaylock"
+          "Control+Super, Slash, exec, pkill anyrun || anyrun"
+          "Control+Super, T, exec, ~/.config/ags/scripts/color_generation/switchwall.sh"
+          "Super, Tab, exec, ags -t 'overview'"
+          "Super, Slash, exec, ags -t 'cheatsheet'"
+          "Super, B, exec, ags -t 'sideleft'"
+          "Super, A, exec, ags -t 'sideleft'"
+          "Super, O, exec, ags -t 'sideleft'"
+          "Super, N, exec, ags -t 'sideright'"
+          "Super, M, exec, ags run-js 'openMusicControls.value = (!Mpris.getPlayer() ? false : !openMusicControls.value);'"
+          "Super, Comma, exec, ags run-js 'openColorScheme.value = true; Utils.timeout(2000, () => openColorScheme.value = false);'"
+          "Super, K, exec, ags -t 'osk'"
+          "Control+Alt, Delete, exec, ags -t 'session'"
+          # "Super+Alt, f12, exec, notify-send 'Test notification' 'This is a really long message to test truncation and wrapping\\\nYou can middle click or flick this notification to dismiss it!' -a 'Shell' -A 'Test1=I got it!' -A 'Test2=Another action'"
+          "Super+Alt, Equal, exec, notify-send 'Urgent notification' 'Ah hell no' -u critical -a 'Hyprland keybind'"
+          "Super+Shift, left, movewindow, l"
+          "Super+Shift, right, movewindow, r"
+          "Super+Shift, up, movewindow, u"
+          "Super+Shift, down, movewindow, d"
+          "Super, left, movefocus, l"
+          "Super, right, movefocus, r"
+          "Super, up, movefocus, u"
+          "Super, down, movefocus, d"
+          "Super, BracketLeft, movefocus, l"
+          "Super, BracketRight, movefocus, r"
+          "Control+Super, right, workspace, +1"
+          "Control+Super, left, workspace, -1"
+          "Control+Super, BracketLeft, workspace, -1"
+          "Control+Super, BracketRight, workspace, +1"
+          "Control+Super, up, workspace, -5"
+          "Control+Super, down, workspace, +5"
+          "Super, Page_Down, workspace, +1"
+          "Super, Page_Up, workspace, -1"
+          "Control+Super, Page_Down, workspace, +1"
+          "Control+Super, Page_Up, workspace, -1"
+          "Super+Alt, Page_Down, movetoworkspace, +1"
+          "Super+Alt, Page_Up, movetoworkspace, -1"
+          "Super+Shift, Page_Down, movetoworkspace, +1"
+          "Super+Shift, Page_Up, movetoworkspace, -1"
+          "Control+Super+Shift, Right, movetoworkspace, +1"
+          "Control+Super+Shift, Left, movetoworkspace, -1"
+          "Super+Shift, mouse_down, movetoworkspace, -1"
+          "Super+Shift, mouse_up, movetoworkspace, +1"
+          "Super+Alt, mouse_down, movetoworkspace, -1"
+          "Super+Alt, mouse_up, movetoworkspace, +1"
+          "Super, F, fullscreen, 0"
+          "Super, D, fullscreen, 1"
+          "Super_Alt, F, fakefullscreen, 0"
+          "Super, 1, workspace, 1"
+          "Super, 2, workspace, 2"
+          "Super, 3, workspace, 3"
+          "Super, 4, workspace, 4"
+          "Super, 5, workspace, 5"
+          "Super, 6, workspace, 6"
+          "Super, 7, workspace, 7"
+          "Super, 8, workspace, 8"
+          "Super, 9, workspace, 9"
+          "Super, 0, workspace, 10"
+          "Super, S, togglespecialworkspace,"
+          "Control+Super, S, togglespecialworkspace,"
+          "Alt, Tab, cyclenext"
+          "Alt, Tab, bringactivetotop,"
+          "Super+Alt, 1, movetoworkspacesilent, 1"
+          "Super+Alt, 2, movetoworkspacesilent, 2"
+          "Super+Alt, 3, movetoworkspacesilent, 3"
+          "Super+Alt, 4, movetoworkspacesilent, 4"
+          "Super+Alt, 5, movetoworkspacesilent, 5"
+          "Super+Alt, 6, movetoworkspacesilent, 6"
+          "Super+Alt, 7, movetoworkspacesilent, 7"
+          "Super+Alt, 8, movetoworkspacesilent, 8"
+          "Super+Alt, 9, movetoworkspacesilent, 9"
+          "Super+Alt, 0, movetoworkspacesilent, 10"
+          "Control+Shift+Super, Up, movetoworkspacesilent, special"
+          "Super+Alt, S, movetoworkspacesilent, special"
+          "Super, mouse_up, workspace, +1"
+          "Super, mouse_down, workspace, -1"
+          "Control+Super, mouse_up, workspace, +1"
+          "bind = Control+Super, mouse_down, workspace, -1"
+        ];
+      bindm = [
+        "Super, mouse:272, movewindow"
+        "Super, mouse:273, resizewindow"
+        "Super, Z, movewindow"
+      ];
+      bindl = [
+        ",XF86AudioMute, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%"
+        "Super+Shift,M, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%"
+        ",Print,exec,grim - | wl-copy"
+        ''
+          Super+Shift, N, exec, playerctl next || playerctl position `bc <<< "100 * $(playerctl metadata mpris:length) / 1000000 / 100"`''
+        ''
+          ,XF86AudioNext, exec, playerctl next || playerctl position `bc <<< "100 * $(playerctl metadata mpris:length) / 1000000 / 100"`''
+        "Super+Shift, B, exec, playerctl previous"
+        "Super+Shift, P, exec, playerctl play-pause"
+        ",XF86AudioPlay, exec, playerctl play-pause"
+        "Super+Shift, L, exec, sleep 0.1 && systemctl suspend"
+        ", XF86AudioMute, exec, ags run-js 'indicator.popup(1);'"
+        "Super+Shift,M,   exec, ags run-js 'indicator.popup(1);'"
+      ];
+      bindle = [
+        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86MonBrightnessUp, exec, ags run-js 'brightness.screen_value += 0.05;'"
+        ",XF86MonBrightnessDown, exec, ags run-js 'brightness.screen_value -= 0.05;'"
+        ",XF86AudioRaiseVolume, exec, ags run-js 'indicator.popup(1);'"
+        ",XF86AudioLowerVolume, exec, ags run-js 'indicator.popup(1);'"
+        ",XF86MonBrightnessUp, exec, ags run-js 'indicator.popup(1);'"
+        ",XF86MonBrightnessDown, exec, ags run-js 'indicator.popup(1);'"
+        "Alt, I, exec, ydotool key 103:1 103:0 "
+        "Alt, K, exec, ydotool key 108:1 108:0"
+        "Alt, J, exec, ydotool key 105:1 105:0"
+        "Alt, L, exec, ydotool key 106:1 106:0"
+      ];
+      bindr = [
+        "Control+Super, R, exec, killall ags ydotool; ags &"
+        "Control+Super+Alt, R, exec, hyprctl reload; killal;l ags ydotool; ags &"
+      ];
+      bindir = [ "Super, Super_L, exec, pkill fuzzel || fuzzel" ];
+      binde = [
+        "Super, Minus, splitratio, -0.1"
+        "Super, Equal, splitratio, 0.1"
+        "Super, Semicolon, splitratio, -0.1"
+        "Super, Apostrophe, splitratio, 0.1"
+      ];
+      windowrule = [
+        "noblur,.*" # Disables blur for windows. Substantially improves performance.
+        "float, ^(steam)$"
+        "pin, ^(showmethekey-gtk)$"
+        "float,title:^(Open File)(.*)$"
+        "float,title:^(Select a File)(.*)$"
+        "float,title:^(Choose wallpaper)(.*)$"
+        "float,title:^(Open Folder)(.*)$"
+        "float,title:^(Save As)(.*)$"
+        "float,title:^(Library)(.*)$ "
+      ];
+      windowrulev2 = [ "tile,class:(wpsoffice)" ];
+      layerrule = [
+        "xray 1, .*"
+        "noanim, selection"
+        "noanim, overview"
+        "noanim, anyrun"
+        "blur, swaylock"
+        "blur, eww"
+        "ignorealpha 0.8, eww"
+        "noanim, noanim"
+        "blur, noanim"
+        "blur, gtk-layer-shell"
+        "ignorezero, gtk-layer-shell"
+        "blur, launcher"
+        "ignorealpha 0.5, launcher"
+        "blur, notifications"
+        "ignorealpha 0.69, notifications"
+        "blur, session"
+        "noanim, sideright"
+        "noanim, sideleft"
+      ];
+
     };
   };
 }
