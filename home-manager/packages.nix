@@ -37,6 +37,8 @@
     zip
     unzip
     glib
+    foot
+    kitty
 
     # hyprland
     wlsunset
