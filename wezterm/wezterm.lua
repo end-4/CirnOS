@@ -5,7 +5,7 @@ return {
 		["Charmful Dark"] = require("charmful"),
 	},
 	color_scheme = "Charmful Dark",
-	font = require("wezterm").font("CaskaydiaCove NF"),
+	font = require("wezterm").font("JetBrainsMono Nerd Font"),
 	default_cursor_style = "BlinkingBar",
 
 	default_prog = { "tmux" },

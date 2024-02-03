@@ -16,6 +16,7 @@ let
     "UbuntuMono"
     "CascadiaCode"
     "FantasqueSansMono"
+    "JetBrainsMono"
     "FiraCode"
     "Mononoki"
   ]; });

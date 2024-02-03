@@ -50,7 +50,7 @@ in
     command-as-login-shell = true;
     custom-shell-command = "${pkgs.tmux}/bin/tmux";
     use-custom-command = true;
-    font = "CaskaydiaCove Nerd Font 12";
+    font = "JetBrainsMono Nerd Font 11";
     fill-tabs = true;
     show-headerbar = false;
     pretty = true;
