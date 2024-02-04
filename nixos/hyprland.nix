@@ -18,7 +18,12 @@ in
   services.xserver.displayManager.startx.enable = true;
   services.greetd = {
     enable = true;
-    settings.default_session.command = "Hyprland --config ${conf}";
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+        user = "greeter";
+      };
+    };
   };
 
   programs.hyprland = {
@@ -40,6 +45,7 @@ in
   };
 
   environment.systemPackages = with pkgs.gnome; [
+    pkgs.greetd.tuigreet
     ags
     pkgs.swww
     pkgs.loupe

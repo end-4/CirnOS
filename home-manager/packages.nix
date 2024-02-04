@@ -50,20 +50,21 @@
     gnome-tweaks
 
     # hyprland
+    brightnessctl
     fuzzel
+    grim
+    hyprpicker
+    imagemagick
+    pavucontrol
+    playerctl
+    swappy
+    swaylock
+    slurp
+    swww
+    wayshot
     wlsunset
     wl-clipboard
     wf-recorder
-    hyprpicker
-    wayshot
-    swappy
-    grim
-    slurp
-    imagemagick
-    pavucontrol
-    brightnessctl
-    swaylock
-    swww
 
     # langs
     nodejs

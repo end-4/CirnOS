@@ -16,6 +16,7 @@
       bibata-cursors
       rubik
       gnome.nautilus-python
+      twitter-color-emoji
     ];
 
     gnome.excludePackages = (with pkgs; [
