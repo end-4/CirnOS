@@ -29,9 +29,15 @@
   # dconf
   programs.dconf.enable = true;
   # packages
-  environment.systemPackages = with pkgs; [ 
-    curl fish git gh home-manager wget
-    nixpkgs-fmt nixfmt
+  environment.systemPackages = with pkgs; [
+    curl
+    fish
+    git
+    gh
+    home-manager
+    wget
+    nixpkgs-fmt
+    nixfmt
   ];
 
   # services

@@ -29,6 +29,9 @@ in
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
+      trusted-public-keys = [
+        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+      ];
     };
   };
 
@@ -41,7 +44,7 @@ in
       NIXPKGS_ALLOW_INSECURE = "1";
       BAT_THEME = "base16";
       GOPATH = "${homeDirectory}/.local/share/go";
-      GOMODCACHE="${homeDirectory}/.cache/go/pkg/mod";
+      GOMODCACHE = "${homeDirectory}/.cache/go/pkg/mod";
     };
 
     sessionPath = [
