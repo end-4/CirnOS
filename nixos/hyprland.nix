@@ -3,7 +3,6 @@ let
   ags = inputs.ags.packages.${pkgs.system}.ags;
   conf = pkgs.writeText "config" ''
     exec-once = swww init
-    exec-once = swww img ${../ags/assets/leaves.jpg}
     exec-once = ags -c ${./greeter/greeter.js}; hyprctl dispatch exit
     misc {
       disable_hyprland_logo = true
