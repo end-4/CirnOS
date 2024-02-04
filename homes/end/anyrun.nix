@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 {
   imports = [
     inputs.anyrun.homeManagerModules.default
@@ -6,11 +6,30 @@
 
   programs.anyrun = {
     enable = true;
+
     config = {
-      plugins = [
-        # An array of all the plugins you want, which either can be paths to the .so files, or their packages
-        inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins
+      plugins = with inputs.anyrun.packages.${pkgs.system}; [
+        applications
+        randr
+        rink
+        shell
+        symbols
       ];
+
+      width.fraction = 0.3;
+      y.absolute = 15;
+      hidePluginInfo = true;
+      closeOnClick = true;
     };
+
+    extraCss = builtins.readFile (./. + "/style-${config.theme.name}.css");
+
+    extraConfigFiles."applications.ron".text = ''
+      Config(
+        desktop_actions: false,
+        max_entries: 5,
+        terminal: Some("wezterm"),
+      )
+    '';
   };
 }

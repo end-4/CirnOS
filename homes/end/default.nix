@@ -21,10 +21,8 @@ in {
     inherit username homeDirectory;
 
     sessionVariables = {
-      QT_XCB_GL_INTEGRATION = "none"; # kde-connect
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_INSECURE = "1";
-      BAT_THEME = "base16";
       GOPATH = "${homeDirectory}/.local/share/go"; # you can use xdg.cacheHome here
       GOMODCACHE = "${homeDirectory}/.cache/go/pkg/mod"; # "
     };
@@ -45,13 +43,6 @@ in {
     "file://${homeDirectory}/Documents/GitHub"
     "file:///mnt/Windows"
   ];
-
-  services = {
-    kdeconnect = {
-      enable = true;
-      indicator = true;
-    };
-  };
 
   programs.home-manager.enable = true;
   home.stateVersion = "23.11"; # this must be the version at which you have started using the program
