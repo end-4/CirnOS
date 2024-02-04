@@ -255,6 +255,22 @@
         "type": "github"
       }
     },
+    "lf-icons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705549864,
+        "narHash": "sha256-JqjJLz+XxbvN2lC8+nhjvfheHjgjlLMp2NvQREF4zbk=",
+        "owner": "gokcehan",
+        "repo": "lf",
+        "rev": "8a14749154c2c11fce4fec0188dc204c012bd3e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gokcehan",
+        "repo": "lf",
+        "type": "github"
+      }
+    },
     "matugen": {
       "inputs": {
         "nixpkgs": "nixpkgs_4"
@@ -377,6 +393,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
+        "lf-icons": "lf-icons",
         "matugen": "matugen",
         "more-waita": "more-waita",
         "nixpkgs": "nixpkgs_5"

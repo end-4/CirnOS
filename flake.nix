@@ -1,6 +1,13 @@
 {
   description = "Home Manager and NixOS configuration of Aylur";
 
+  outputs = {self, ...}: {
+    # editing flake.nix triggers certain utilities such as direnv
+    # to reload - editing host configurations do not require a direnv
+    # relod, so lets move hosts out of the way
+    nixosConfigurations = import ./hosts {inherit self;};
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -13,44 +20,32 @@
       url = "github:hyprwm/hyprland-plugins";
       # inputs.nixpkgs.follows = "hyprland";
     };
+
     ags.url = "github:Aylur/ags";
+
     matugen = {
       url = "github:/InioX/Matugen";
       # ref = "refs/tags/matugen-v0.10.0"
+    };
+
+    lf-icons = {
+      url = "github:gokcehan/lf";
+      flake = false;
     };
 
     more-waita = {
       url = "github:somepaulo/MoreWaita";
       flake = false;
     };
+
     firefox-gnome-theme = {
       url = "github:rafaelmardojai/firefox-gnome-theme";
       flake = false;
     };
+
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = { home-manager, nixpkgs, ... }@inputs:
-    let
-      username = "end";
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in {
-      nixosConfigurations."CirnOS" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs username system; };
-        modules = [ ./nixos/configuration.nix ];
-      };
-
-      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs username; };
-        modules = [ ./home-manager/home.nix ];
-      };
-    };
 }

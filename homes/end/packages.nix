@@ -76,5 +76,8 @@
     gcc
     typescript
     eslint
+
+    # very important stuff
+    uwuify
   ];
 }

@@ -104,7 +104,6 @@
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
-        "org.wezfurlong.wezterm.desktop"
         "org.gnome.Nautilus.desktop"
         "org.gnome.Calendar.desktop"
         "obsidian.desktop"
@@ -131,7 +130,7 @@
     };
 
     "com/github/stunkymonkey/nautilus-open-any-terminal" = {
-      terminal = "wezterm";
+      terminal = "foot";
     };
 
     "org/virt-manager/virt-manager/connections" = {

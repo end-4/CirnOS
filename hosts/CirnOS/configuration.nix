@@ -1,12 +1,8 @@
-{ pkgs, username, ... }: {
-
-  imports = [
-    /etc/nixos/hardware-configuration.nix
-    ./audio.nix
-    ./laptop.nix
-    ./locale.nix
-  ];
-
+{
+  pkgs,
+  username,
+  ...
+}: {
   # nix
   documentation.nixos.enable = false; # .desktop
   nixpkgs.config.allowUnfree = true;
@@ -42,7 +38,7 @@
   services = {
     xserver = {
       enable = true;
-      excludePackages = [ pkgs.xterm ];
+      excludePackages = [pkgs.xterm];
     };
     printing.enable = true;
     # flatpak.enable = true;
@@ -61,8 +57,7 @@
   # user
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups =
-      [ "nixosvmtest" "networkmanager" "wheel" "audio" "video" "libvirtd" ];
+    extraGroups = ["nixosvmtest" "networkmanager" "wheel" "audio" "video" "libvirtd"];
   };
 
   # network
@@ -81,7 +76,7 @@
   # bootloader
   boot = {
     tmp.cleanOnBoot = true;
-    supportedFilesystems = [ "btrfs" "ext4" "fat32" "ntfs" ];
+    supportedFilesystems = ["btrfs" "ext4" "fat32" "ntfs"];
     loader = {
       grub = {
         enable = true;
