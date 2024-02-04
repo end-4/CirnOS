@@ -38,7 +38,7 @@ in
       ];
       monitor = [ ",preferred,auto,1" ];
       "exec-once" = [
-        "waybar"
+        "ags"
         "swww kill; swww init"
         "fcitx5"
         "wl-paste --type text --watch cliphist store"

@@ -51,6 +51,7 @@
 
     # hyprland
     brightnessctl
+    cliphist
     fuzzel
     grim
     hyprpicker
