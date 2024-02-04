@@ -19,10 +19,6 @@
       # ref = "refs/tags/matugen-v0.10.0"
     };
 
-    lf-icons = {
-      url = "github:gokcehan/lf";
-      flake = false;
-    };
     more-waita = {
       url = "github:somepaulo/MoreWaita";
       flake = false;
