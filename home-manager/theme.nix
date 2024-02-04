@@ -19,6 +19,7 @@ let
     "JetBrainsMono"
     "FiraCode"
     "Mononoki"
+    "SpaceMono"
   ]; });
 
   cursor-theme = "Bibata-Modern-Classic";

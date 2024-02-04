@@ -15,7 +15,7 @@ in
     ./mimelist.nix
     ./packages.nix
     # ./sh.nix
-    ./starship.nix
+    # ./starship.nix
     ./sway.nix
     ./theme.nix
     ./wezterm.nix

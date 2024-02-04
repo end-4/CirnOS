@@ -28,25 +28,25 @@
     ripgrep
     fzf
     socat
-    jq
+    jq gojq
     acpi
-    inotify-tools
     ffmpeg
     libnotify
     killall
-    zip
-    unzip
+    zip unzip
     glib
-    foot
-    kitty
+    foot kitty starship
+    vscode
 
     # hyprland
+    fuzzel
     wlsunset
     wl-clipboard
     wf-recorder
     hyprpicker
     wayshot
     swappy
+    grim
     slurp
     imagemagick
     pavucontrol

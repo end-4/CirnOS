@@ -13,7 +13,7 @@ import Indicator from './widgets/indicators/main.js';
 import Osk from './widgets/onscreenkeyboard/main.js';
 import Overview from './widgets/overview/main.js';
 import Session from './widgets/session/main.js';
-import SideLeft from './widgets/sideleft/main.js';
+// import SideLeft from './widgets/sideleft/main.js';
 import SideRight from './widgets/sideright/main.js';
 
 const range = (length, start = 1) => Array.from({ length }, (_, i) => i + start);
@@ -39,7 +39,7 @@ const Windows = () => [
     Overview(),
     forMonitors(Indicator),
     Cheatsheet(),
-    SideLeft(),
+    // SideLeft(),
     SideRight(),
     Osk(),
     Session(),

@@ -47,13 +47,12 @@ in
     nautilus
     baobab
     gnome-calendar
-    gnome-boxes
     gnome-system-monitor
     gnome-control-center
     gnome-weather
     gnome-calculator
     gnome-clocks
-    gnome-software # for flatpak
+    gnome-text-editor
   ];
 
   systemd = {
