@@ -19,7 +19,7 @@
   #   podman.enable = true;
   #   libvirtd.enable = true;
   # };
-  
+
   services.greetd = {
     enable = true;
     settings = {
