@@ -41,7 +41,7 @@
         config.allowUnfree = true;
       };
     in {
-      nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."CirnOS" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs username system; };
         modules = [ ./nixos/configuration.nix ];
       };
