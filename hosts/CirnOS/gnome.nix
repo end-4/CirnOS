@@ -26,6 +26,7 @@
       (with pkgs; [
         # gnome-text-editor
         # gnome-console
+        gedit # text editor
         gnome-photos
         gnome-tour
         gnome-connections
@@ -34,7 +35,6 @@
       ++ (with pkgs.gnome; [
         cheese # webcam tool
         gnome-music
-        gedit # text editor
         epiphany # web browser
         geary # email reader
         evince # document viewer
@@ -53,15 +53,15 @@
       ]);
   };
 
-  services.xserver = {
-    displayManager.gdm.enable = true;
-    desktopManager.gnome = {
-      enable = true;
-      extraGSettingsOverridePackages = [
-        pkgs.nautilus-open-any-terminal
-      ];
-    };
-  };
+  # services.xserver = {
+  #   displayManager.gdm.enable = true;
+  #   desktopManager.gnome = {
+  #     enable = true;
+  #     extraGSettingsOverridePackages = [
+  #         pkgs.nautilus-open-any-terminal
+  #     ];
+  #   };
+  # };
 
   programs.dconf.profiles = {
     gdm.databases = [

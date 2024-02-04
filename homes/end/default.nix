@@ -7,7 +7,7 @@ in {
     ./anyrun.nix
     ./blackbox.nix
     ./browser.nix
-    ./bspwm.nix
+    # ./bspwm.nix
     ./dconf.nix
     ./hyprland.nix
     ./mimelist.nix
@@ -16,7 +16,7 @@ in {
     # ./starship.nix
     ./sway.nix
     ./theme.nix
-    ./wezterm.nix
+    # ./wezterm.nix
   ];
 
   home = {
@@ -56,5 +56,5 @@ in {
   };
 
   programs.home-manager.enable = true;
-  home.stateVersion = "24.05"; # this must be the version at which you have started using the program
+  home.stateVersion = "23.11"; # this must be the version at which you have started using the program
 }
