@@ -28,9 +28,10 @@
 
   # dconf
   programs.dconf.enable = true;
-
   # packages
-  environment.systemPackages = with pkgs; [ curl fish git gh home-manager wget ];
+  environment.systemPackages = with pkgs; [ 
+    curl fish git gh home-manager wget
+  ];
 
   # services
   services = {
@@ -42,22 +43,16 @@
     # flatpak.enable = true;
   };
 
+  # ZRAM
+  zramSwap.enable = true;
+  zramSwap.memoryPercent = 100;
+
   # logind
   services.logind.extraConfig = ''
     HandlePowerKey=ignore
     HandleLidSwitch=suspend
     HandleLidSwitchExternalPower=ignore
   '';
-
-  # kde connect
-  # networking.firewall = rec {
-  #   allowedTCPPortRanges = [{
-  #     from = 1714;
-  #     to = 1764;
-  #   }];
-  #   allowedUDPPortRanges = allowedTCPPortRanges;
-  # };
-
   # user
   users.users.${username} = {
     isNormalUser = true;

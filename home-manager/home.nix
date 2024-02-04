@@ -9,9 +9,7 @@ in
     ./browser.nix
     ./bspwm.nix
     ./dconf.nix
-    ./git.nix
     ./hyprland.nix
-    ./lf.nix
     ./mimelist.nix
     ./packages.nix
     # ./sh.nix
