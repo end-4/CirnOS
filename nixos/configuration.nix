@@ -50,18 +50,17 @@
   '';
 
   # kde connect
-  networking.firewall = rec {
-    allowedTCPPortRanges = [{
-      from = 1714;
-      to = 1764;
-    }];
-    allowedUDPPortRanges = allowedTCPPortRanges;
-  };
+  # networking.firewall = rec {
+  #   allowedTCPPortRanges = [{
+  #     from = 1714;
+  #     to = 1764;
+  #   }];
+  #   allowedUDPPortRanges = allowedTCPPortRanges;
+  # };
 
   # user
   users.users.${username} = {
     isNormalUser = true;
-    initialPassword = username;
     extraGroups =
       [ "nixosvmtest" "networkmanager" "wheel" "audio" "video" "libvirtd" ];
   };
@@ -92,18 +91,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    # Normally I wouldn't use plymouth but this looks cool af
-    # plymouth = rec {
-    #   enable = true;
-    #   # black_hud circle_hud cross_hud square_hud
-    #   # circuit connect cuts_alt seal_2 seal_3
-    #   theme = "circle_hud";
-    #   themePackages = with pkgs;
-    #     [
-    #       (adi1090x-plymouth-themes.override { selected_themes = [ theme ]; })
-    #     ];
-    # };
   };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
