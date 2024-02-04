@@ -18,6 +18,7 @@
     d-spy
     kolourpaint
     github-desktop
+    gnome.nautilus
     icon-library
     dconf-editor
     figma-linux
@@ -78,6 +79,6 @@
     eslint
 
     # very important stuff
-    uwuify
+    # uwuify
   ];
 }
