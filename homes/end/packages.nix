@@ -12,6 +12,10 @@
     # colorscript
     (import ./colorscript.nix { inherit pkgs; })
 
+    # keyboard
+    fcitx5-with-addons
+    fcitx5-unikey
+
     # gui
     blueberry
     (mpv.override { scripts = [ mpvScripts.mpris ]; })

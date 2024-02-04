@@ -12,11 +12,9 @@ in {
     ./hyprland.nix
     ./mimelist.nix
     ./packages.nix
-    # ./sh.nix
     # ./starship.nix
     ./sway.nix
     ./theme.nix
-    # ./wezterm.nix
   ];
 
   home = {
