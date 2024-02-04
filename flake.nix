@@ -1,7 +1,7 @@
 {
   description = "Home Manager and NixOS configuration of Aylur";
 
-  inputs = {
+  inputs = rec {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -46,10 +46,10 @@
         modules = [ ./nixos/configuration.nix ];
       };
 
-      #homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-      #  inherit pkgs;
-      #  extraSpecialArgs = { inherit inputs username; };
-      #  modules = [ ./home-manager/home.nix ];
-      #};
+      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit inputs username; };
+        modules = [ ./home-manager/home.nix ];
+      };
     };
 }
