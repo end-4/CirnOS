@@ -1,8 +1,7 @@
-{ pkgs, username, ... }:
 let
-  homeDirectory = "/home/${username}";
-in
-{
+  username = "end";
+  homeDirectory = "/home/end";
+in {
   imports = [
     ./ags.nix
     ./anyrun.nix
@@ -20,21 +19,6 @@ in
     ./wezterm.nix
   ];
 
-  news.display = "show";
-
-  targets.genericLinux.enable = true;
-
-  nix = {
-    package = pkgs.nix;
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      warn-dirty = false;
-      trusted-public-keys = [
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-      ];
-    };
-  };
-
   home = {
     inherit username homeDirectory;
 
@@ -43,8 +27,8 @@ in
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_INSECURE = "1";
       BAT_THEME = "base16";
-      GOPATH = "${homeDirectory}/.local/share/go";
-      GOMODCACHE = "${homeDirectory}/.cache/go/pkg/mod";
+      GOPATH = "${homeDirectory}/.local/share/go"; # you can use xdg.cacheHome here
+      GOMODCACHE = "${homeDirectory}/.cache/go/pkg/mod"; # "
     };
 
     sessionPath = [
@@ -72,5 +56,5 @@ in
   };
 
   programs.home-manager.enable = true;
-  home.stateVersion = "21.11";
+  home.stateVersion = "24.05"; # this must be the version at which you have started using the program
 }
