@@ -27,7 +27,6 @@ Utils.exec(`bash -c 'echo "" > ${App.configDir}/scss/_musicwal.scss'`); // reset
 Utils.exec(`bash -c 'echo "" > ${App.configDir}/scss/_musicmaterial.scss'`); // reset music styles
 function applyStyle() {
     Utils.exec(`sassc ${App.configDir}/scss/main.scss ${App.configDir}/style.css`);
-    Utils.exec(`sassc ${App.configDir}/scss/main.scss ${App.configDir}/style.css`);
     App.resetCss();
     App.applyCss(`${App.configDir}/style.css`);
     console.log('[LOG] Styles loaded')

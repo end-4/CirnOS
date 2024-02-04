@@ -3,13 +3,17 @@
   imports = [ inputs.ags.homeManagerModules.default ];
 
   home.packages = with pkgs; [
+    gtksourceview
+    webkitgtk
     sassc
     (python311.withPackages (p: [ p.python-pam ]))
   ];
 
   programs.ags = {
     enable = true;
-    configDir = ../ags;
+    configDir = null;     # if ags dir is managed by home-manager, it'll end up being read-only. not too cool.
+    # configDir = ../ags;
+
     # extraPackages = with pkgs; [
     #   libgtop
     #   libnotify

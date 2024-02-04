@@ -21,6 +21,7 @@
     icon-library
     dconf-editor
     figma-linux
+    yad
 
     # tools
     bat
@@ -53,6 +54,7 @@
     imagemagick
     pavucontrol
     brightnessctl
+    swaylock
     swww
 
     # langs
