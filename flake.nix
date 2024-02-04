@@ -16,7 +16,7 @@
     };
 
     ags.url = "github:Aylur/ags";
-    stm.url = "github:Aylur/stm";
+    # stm.url = "github:Aylur/stm";
 
     lf-icons = {
       url = "github:gokcehan/lf";
