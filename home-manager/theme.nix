@@ -28,7 +28,7 @@ in
 {
   home = {
     packages = with pkgs; [
-      gradience # gtk color changer
+      # themes
       adw-gtk3
       font-awesome
       material-symbols

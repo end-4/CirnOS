@@ -89,7 +89,7 @@ in
         follow_mouse = 1;
       };
       decoration = {
-        rounding = 30;
+        rounding = 20;
 
         blur = {
           enabled = true;
@@ -160,7 +160,7 @@ in
       bind =
         let SLURP_COMMAND = "$(slurp -d -c eedcf5BB -b 4f425644 -s 00000000)";
         in [
-          "Super, C, exec, codium --password-store=gnome"
+          "Super, C, exec, code --password-store=gnome"
           "Super, T, exec, foot --override shell=fish"
           "Super, E, exec, nautilus --new-window"
           "Super+Alt, E, exec, thunar"

@@ -14,7 +14,7 @@
 
     # gui
     blueberry
-    (mpv.override { scripts = [mpvScripts.mpris]; })
+    (mpv.override { scripts = [ mpvScripts.mpris ]; })
     d-spy
     kolourpaint
     github-desktop
@@ -30,16 +30,24 @@
     ripgrep
     fzf
     socat
-    jq gojq
+    jq
+    gojq
     acpi
     ffmpeg
     libnotify
     killall
-    zip unzip
+    zip
+    unzip
     glib
-    foot kitty starship
+    foot
+    kitty
+    starship
     vscode
     ydotool
+
+    # theming tools
+    gradience
+    gnome-tweaks
 
     # hyprland
     fuzzel

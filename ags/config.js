@@ -68,3 +68,4 @@ export default {
 forMonitors(Bar);
 forMonitors(BarCornerTopleft);
 forMonitors(BarCornerTopright);
+

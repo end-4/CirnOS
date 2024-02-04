@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,9 +13,11 @@
       url = "github:hyprwm/hyprland-plugins";
       # inputs.nixpkgs.follows = "hyprland";
     };
-
     ags.url = "github:Aylur/ags";
-    # stm.url = "github:Aylur/stm";
+    matugen = {
+      url = "github:/InioX/Matugen";
+      # ref = "refs/tags/matugen-v0.10.0"
+    };
 
     lf-icons = {
       url = "github:gokcehan/lf";
@@ -29,6 +30,10 @@
     firefox-gnome-theme = {
       url = "github:rafaelmardojai/firefox-gnome-theme";
       flake = false;
+    };
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

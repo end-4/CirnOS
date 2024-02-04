@@ -31,6 +31,7 @@
   # packages
   environment.systemPackages = with pkgs; [ 
     curl fish git gh home-manager wget
+    nixpkgs-fmt nixfmt
   ];
 
   # services
