@@ -52,7 +52,7 @@ in
     gnome-weather
     gnome-calculator
     gnome-clocks
-    gnome-text-editor
+    pkgs.gnome-text-editor
   ];
 
   systemd = {
