@@ -150,7 +150,6 @@ in
         swallow_regex = "(foot|kitty|allacritty|Alacritty)";
 
         disable_hyprland_logo = true;
-        force_hypr_chan = true;
         new_window_takes_over_fullscreen = 2;
       };
       debug = {

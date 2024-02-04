@@ -30,6 +30,7 @@ in
     packages = with pkgs; [
       adw-gtk3
       font-awesome
+      material-symbols
       nerdfonts
       moreWaita
       bibata-cursors

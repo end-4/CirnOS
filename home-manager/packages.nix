@@ -13,6 +13,7 @@
     (import ./colorscript.nix { inherit pkgs; })
 
     # gui
+    blueberry
     (mpv.override { scripts = [mpvScripts.mpris]; })
     d-spy
     kolourpaint
@@ -37,6 +38,7 @@
     glib
     foot kitty starship
     vscode
+    ydotool
 
     # hyprland
     fuzzel
