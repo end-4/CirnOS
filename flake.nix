@@ -1,7 +1,7 @@
 {
   description = "Home Manager and NixOS configuration of Aylur";
 
-  inputs = rec {
+  inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -12,7 +12,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
-      inputs.nixpkgs.follows = "hyprland";
+      # inputs.nixpkgs.follows = "hyprland";
     };
 
     ags.url = "github:Aylur/ags";
