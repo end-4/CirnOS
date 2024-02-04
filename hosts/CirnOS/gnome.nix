@@ -53,6 +53,16 @@
       ]);
   };
 
+  # services.xserver = {
+  #   displayManager.gdm.enable = true;
+  #   desktopManager.gnome = {
+  #     enable = true;
+  #     extraGSettingsOverridePackages = [
+  #         pkgs.nautilus-open-any-terminal
+  #     ];
+  #   };
+  # };
+
   programs.dconf.profiles = {
     gdm.databases = [
       {
