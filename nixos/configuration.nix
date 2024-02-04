@@ -30,7 +30,7 @@
   programs.dconf.enable = true;
 
   # packages
-  environment.systemPackages = with pkgs; [ curl fish git home-manager wget ];
+  environment.systemPackages = with pkgs; [ curl fish git gh home-manager wget ];
 
   # services
   services = {
