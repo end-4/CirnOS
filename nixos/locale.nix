@@ -15,8 +15,10 @@
   };
 
   console.useXkbConfig = true;
-  services.xserver = {
-    layout = "en";
-    xkbVariant = "";
-  };
+  #services.xserver = {
+  #  xkb = {
+  #    layout = "en";
+  #    variant = "";
+  #  };
+  #};
 }

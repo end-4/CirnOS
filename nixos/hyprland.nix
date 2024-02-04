@@ -10,7 +10,7 @@ let
       force_default_wallpaper = 0
     }
     input {
-      kb_layout = ${config.services.xserver.layout}
+      kb_layout = ${config.services.xserver.xkb.layout}
     }
   '';
 in
