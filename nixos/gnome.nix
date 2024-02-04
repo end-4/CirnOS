@@ -44,7 +44,7 @@
       gnome-shell-extensions
       gnome-maps
       # gnome-font-viewer
-    ]);
+    ];);
   };
 
   services.xserver = {
