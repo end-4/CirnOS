@@ -19,6 +19,7 @@
 
     extraPackages = with pkgs; [
       gtksourceview
+      gtksourceview4
       webkitgtk
       python311Packages.material-color-utilities
       sassc
