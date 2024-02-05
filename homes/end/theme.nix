@@ -6,21 +6,28 @@ let
     name = "MoreWaita";
     src = inputs.more-waita;
     installPhase = ''
-        mkdir -p $out/share/icons
-        mv * $out/share/icons
+      mkdir -p $out/share/icons
+      mv * $out/share/icons
     '';
   };
 
-  nerdfonts = (pkgs.nerdfonts.override { fonts = [
-    "Ubuntu"
-    "UbuntuMono"
-    "CascadiaCode"
-    "FantasqueSansMono"
-    "JetBrainsMono"
-    "FiraCode"
-    "Mononoki"
-    "SpaceMono"
-  ]; });
+  nerdfonts = (pkgs.nerdfonts.override {
+    fonts = [
+      "Ubuntu"
+      "UbuntuMono"
+      "CascadiaCode"
+      "FantasqueSansMono"
+      "JetBrainsMono"
+      "FiraCode"
+      "Mononoki"
+      "SpaceMono"
+    ];
+  });
+  google-fonts = (pkgs.google-fonts.override {
+    fonts = [
+      "Gabarito"
+    ];
+  });
 
   cursor-theme = "Bibata-Modern-Classic";
   cursor-package = pkgs.bibata-cursors;
@@ -33,6 +40,7 @@ in
       font-awesome
       material-symbols
       nerdfonts
+      google-fonts
       moreWaita
       bibata-cursors
       # morewaita-icon-theme
@@ -64,15 +72,15 @@ in
         recursive = true;
         source = "${nerdfonts}/share/fonts/truetype/NerdFonts";
       };
-      ".config/gtk-4.0/gtk.css" = {
-        text = ''
-          window.messagedialog .response-area > button,
-          window.dialog.message .dialog-action-area > button,
-          .background.csd{
-            border-radius: 0;
-          }
-        '';
-      };
+      # ".config/gtk-4.0/gtk.css" = {
+      #   text = ''
+      #     window.messagedialog .response-area > button,
+      #     window.dialog.message .dialog-action-area > button,
+      #     .background.csd{
+      #       border-radius: 0;
+      #     }
+      #   '';
+      # };
       ".local/share/icons/MoreWaita" = {
         source = "${moreWaita}/share/icons";
       };
