@@ -72,8 +72,8 @@ in
       binds = { scroll_event_delay = 0; };
       input = {
         # Keyboard: Add a layout and uncomment kb_options for Win+Space switching shortcut
-        kb_layout = "us,vn";
-        kb_options = grp:win_space_toggle;
+        kb_layout = "us";
+        # kb_options = grp:win_space_toggle;
         numlock_by_default = true;
         repeat_delay = 250;
         repeat_rate = 35;
