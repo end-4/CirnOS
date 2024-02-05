@@ -6,9 +6,7 @@ in
   imports = [
     ./ags.nix
     ./anyrun.nix
-    ./blackbox.nix
     ./browser.nix
-    # ./bspwm.nix
     ./dconf.nix
     ./hyprland.nix
     ./mimelist.nix

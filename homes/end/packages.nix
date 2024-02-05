@@ -1,11 +1,5 @@
 { pkgs, ... }:
 {
-  xdg.desktopEntries = {
-    "lf" = {
-      name = "lf";
-      noDisplay = true;
-    };
-  };
 
   home.packages = with pkgs; with nodePackages_latest; with gnome; [
     sway

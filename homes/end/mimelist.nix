@@ -1,5 +1,6 @@
 let
   browser = "firefox.desktop";
+  editor = "code.desktop";
   file-manager = "org.gnome.Nautilus.desktop";
   image-viewer = "org.gnome.Loupe.desktop";
   torrent = "transmission-gtk.desktop";
@@ -17,6 +18,7 @@ in {
 
       "x-scheme-handler/magnet" = torrent;
       "application/pdf" = browser;
+      "application/x-shellscript" = editor;
 
       "image/jpeg" = image-viewer;
       "image/bmp" = image-viewer;
