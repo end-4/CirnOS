@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 {
-  imports = [ 
+  imports = [
     inputs.ags.homeManagerModules.default
   ];
 
@@ -14,12 +14,14 @@
 
   programs.ags = {
     enable = true;
-    configDir = null;     # if ags dir is managed by home-manager, it'll end up being read-only. not too cool.
+    configDir = null; # if ags dir is managed by home-manager, it'll end up being read-only. not too cool.
     # configDir = ../ags;
 
-    # extraPackages = with pkgs; [
-    #   libgtop
-    #   libnotify
-    # ];
+    extraPackages = with pkgs; [
+      gtksourceview
+      webkitgtk
+      python311Packages.material-color-utilities
+      sassc
+    ];
   };
 }
