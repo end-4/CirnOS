@@ -5,8 +5,6 @@
   ];
 
   home.packages = with pkgs; [
-    gtksourceview
-    webkitgtk
     python311Packages.material-color-utilities
     sassc
     (python311.withPackages (p: [ p.python-pam ]))
