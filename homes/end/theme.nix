@@ -40,6 +40,8 @@ in
       font-awesome
       material-symbols
       nerdfonts
+      noto-fonts
+      noto-fonts-cjk-sans
       google-fonts
       moreWaita
       bibata-cursors
