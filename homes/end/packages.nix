@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
 
-  home.packages = with pkgs; with nodePackages_latest; with gnome; [
+  home.packages = with pkgs; with nodePackages_latest; with gnome; with libsForQt5; [
     sway
     # keyboard
     fcitx5-with-addons
@@ -13,6 +13,7 @@
     d-spy
     dolphin
     kolourpaint
+    qt5.qtimageformats
     github-desktop
     gnome.nautilus
     icon-library
