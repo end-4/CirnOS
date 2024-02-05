@@ -1,8 +1,7 @@
-{
-  pkgs,
-  username,
-  config,
-  ...
+{ pkgs
+, username
+, config
+, ...
 }: {
   # nix
   documentation.nixos.enable = false; # .desktop
@@ -21,12 +20,25 @@
   #   libvirtd.enable = true;
   # };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
-        user = "greeter";
+  services = {
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+          user = "greeter";
+        };
+      };
+    };
+    gvfs.enable = true;
+    xserver = {
+      enable = true;
+      excludePackages = [ pkgs.xterm ];
+      desktopManager.gnome = {
+        enable = true;
+        extraGSettingsOverridePackages = [
+          pkgs.nautilus-open-any-terminal
+        ];
       };
     };
   };
@@ -45,16 +57,6 @@
     nixfmt
   ];
 
-  # services
-  services = {
-    xserver = {
-      enable = true;
-      excludePackages = [pkgs.xterm];
-    };
-    printing.enable = true;
-    # flatpak.enable = true;
-  };
-
   # ZRAM
   zramSwap.enable = true;
   zramSwap.memoryPercent = 100;
@@ -68,7 +70,7 @@
   # user
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["nixosvmtest" "networkmanager" "wheel" "audio" "video" "libvirtd"];
+    extraGroups = [ "nixosvmtest" "networkmanager" "wheel" "audio" "video" "libvirtd" ];
   };
 
   # network
@@ -87,7 +89,7 @@
   # Boot
   boot = {
     tmp.cleanOnBoot = true;
-    supportedFilesystems = ["btrfs" "ext4" "fat32" "ntfs"];
+    supportedFilesystems = [ "btrfs" "ext4" "fat32" "ntfs" ];
     loader = {
       grub = {
         enable = true;
@@ -97,8 +99,8 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    extraModulePackages = with config.boot.kernelPackages; [acpi_call];
-    kernelModules = ["acpi_call"];
+    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    kernelModules = [ "acpi_call" ];
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     # make 3.5mm jack work
     # extraModprobeConfig = ''
