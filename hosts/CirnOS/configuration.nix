@@ -40,7 +40,7 @@
     rtkit.enable = true;
     polkit.enable = true;
     pam.services.swaylock = {};
-    pam.services.nautilus = {};
+    # pam.services.swaylock-effects = {};
   };
 
   # dconf

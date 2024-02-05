@@ -57,7 +57,7 @@
     pavucontrol
     playerctl
     swappy
-    swaylock
+    swaylock-effects
     swayidle
     slurp
     swww
