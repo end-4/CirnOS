@@ -31,21 +31,25 @@ in
     ];
   };
 
-  gtk.gtk3 = {
-    bookmarks = [
-      "file://${homeDirectory}/Downloads"
-      "file://${homeDirectory}/Documents"
-      "file://${homeDirectory}/Pictures"
-      "file://${homeDirectory}/Music"
-      "file://${homeDirectory}/Videos"
-      "file://${homeDirectory}/.config"
-      "file://${homeDirectory}/.config/ags"
-      "file://${homeDirectory}/.config/hypr"
-      "file://${homeDirectory}/GitHub"
-      "file:///mnt/Windows"
-    ];
-    extraConfig = {
-      font = "Rubik 11";
+  gtk = {
+    font = {
+      name = "Rubik";
+      package = pkgs.google-fonts.override { fonts = [ "Rubik" ]; };
+      size = 11;
+    };
+    gtk3 = {
+      bookmarks = [
+        "file://${homeDirectory}/Downloads"
+        "file://${homeDirectory}/Documents"
+        "file://${homeDirectory}/Pictures"
+        "file://${homeDirectory}/Music"
+        "file://${homeDirectory}/Videos"
+        "file://${homeDirectory}/.config"
+        "file://${homeDirectory}/.config/ags"
+        "file://${homeDirectory}/.config/hypr"
+        "file://${homeDirectory}/GitHub"
+        "file:///mnt/Windows"
+      ];
     };
   };
 
