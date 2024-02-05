@@ -185,7 +185,7 @@ in
           "Super+Shift, C, exec, hyprpicker -a"
           "Super, V, exec, pkill fuzzel || cliphist list | fuzzel --no-fuzzy --dmenu | cliphist decode | wl-copy"
           ''
-            Control+Super+Shift,S,exec,grim -g ${SLURP_COMMAND} "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
+            Control+Super+Shift,S,exec,grim -g "${SLURP_COMMAND}" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
           ''
           "Super, L, exec, swaylock"
           "Super+Shift, L, exec, swaylock"
