@@ -42,7 +42,11 @@
   };
 
   # dconf
-  programs.dconf.enable = true;
+  programs = {
+    zsh.enable = true;
+    fish.enable = true;
+    dconf.enable = true;
+  };
   # packages
   environment.systemPackages = with pkgs; [
     curl
@@ -67,10 +71,13 @@
     HandleLidSwitchExternalPower=ignore
   '';
   # user
-  users.users.${username} = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "video" "input" "libvirtd" ];
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.${username} = {
+      isNormalUser = true;
+      shell = pkgs.zsh;
+      extraGroups = [ "networkmanager" "wheel" "video" "input" "libvirtd" ];
+    };
   };
 
   # network
