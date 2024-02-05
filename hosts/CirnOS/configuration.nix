@@ -78,7 +78,7 @@
     users.${username} = {
       isNormalUser = true;
       shell = pkgs.zsh;
-      extraGroups = [ "networkmanager" "wheel" "video" "input" "libvirtd" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "input" "uinput" "libvirtd" ];
     };
   };
 
