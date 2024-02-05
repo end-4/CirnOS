@@ -20,6 +20,7 @@
     blueberry
     (mpv.override { scripts = [ mpvScripts.mpris ]; })
     d-spy
+    dolphin
     kolourpaint
     github-desktop
     gnome.nautilus

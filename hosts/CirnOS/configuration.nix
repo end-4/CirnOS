@@ -83,7 +83,7 @@
     settings.General.Experimental = true; # for gnome-bluetooth percentage
   };
 
-  # bootloader
+  # Boot
   boot = {
     tmp.cleanOnBoot = true;
     supportedFilesystems = ["btrfs" "ext4" "fat32" "ntfs"];
@@ -96,6 +96,13 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    extraModulePackages = with config.boot.kernelPackages; [acpi_call];
+    kernelModules = ["acpi_call"];
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    # make 3.5mm jack work
+    # extraModprobeConfig = ''
+    #   options snd_hda_intel model=headset-mode
+    # '';
   };
 
   system.stateVersion = "23.11";
