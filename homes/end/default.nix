@@ -2,7 +2,7 @@ let
   username = "end";
   homeDirectory = "/home/end";
 in
-{
+{ pkgs, ... }: {
   imports = [
     ./ags.nix
     ./anyrun.nix
