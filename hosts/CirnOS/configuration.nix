@@ -34,14 +34,14 @@
     envfs.enable = true;
     xserver = {
       enable = true;
-      layout = "us";
-      xkbVariant = "";
-      # desktopManager.gnome = {
-      #   enable = true;
-      #   extraGSettingsOverridePackages = [
-      #     pkgs.nautilus-open-any-terminal
-      #   ];
-      # };
+      xkb.layout = "us";
+      xkb.variant = "";
+      desktopManager.gnome = {
+        enable = true;
+        extraGSettingsOverridePackages = [
+          pkgs.nautilus-open-any-terminal
+        ];
+      };
     };
   };
 
