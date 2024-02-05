@@ -177,8 +177,12 @@ in
           "Shift+Super+Alt, Q, exec, hyprctl kill"
           "Control+Shift+Alt, Delete, exec, pkill wlogout || wlogout -p layer-shell"
           "Control+Shift+Alt+Super, Delete, exec, systemctl poweroff"
-          "Super+Shift+Alt, S, exec, grim -g "${SLURP_COMMAND}" - | swappy -f -"
-          "Super+Shift, S, exec, grim -g "${SLURP_COMMAND}" - | wl-copy"
+          ''
+            Super+Shift+Alt, S, exec, grim -g "${SLURP_COMMAND}" - | swappy -f -
+          ''
+          ''
+            Super+Shift, S, exec, grim -g "${SLURP_COMMAND}" - | wl-copy
+          ''
           "Super+Alt, R, exec, ~/.config/ags/scripts/record-script.sh"
           "Control+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen"
           "Super+Shift+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen-sound"
