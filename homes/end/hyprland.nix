@@ -24,6 +24,13 @@ in
     terminal = false;
   };
 
+  programs = {
+    swaylock = {
+      enable = true;
+      package = pkgs.swaylock-effects;
+    }
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
