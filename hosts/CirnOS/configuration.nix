@@ -31,16 +31,23 @@
       };
     };
     gvfs.enable = true;
+    envfs.enable = true;
     xserver = {
       enable = true;
-      excludePackages = [ pkgs.xterm ];
-      desktopManager.gnome = {
-        enable = true;
-        extraGSettingsOverridePackages = [
-          pkgs.nautilus-open-any-terminal
-        ];
-      };
+      layout = "us";
+      xkbVariant = "";
+      # desktopManager.gnome = {
+      #   enable = true;
+      #   extraGSettingsOverridePackages = [
+      #     pkgs.nautilus-open-any-terminal
+      #   ];
+      # };
     };
+  };
+
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
   };
 
   # dconf
@@ -99,9 +106,10 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
-    kernelModules = [ "acpi_call" ];
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    # extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    # kernelModules = [ "acpi_call" ];
+
     # make 3.5mm jack work
     # extraModprobeConfig = ''
     #   options snd_hda_intel model=headset-mode
