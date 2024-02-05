@@ -18,17 +18,17 @@ in
 
   home = {
     inherit username homeDirectory;
-
     sessionVariables = {
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_INSECURE = "1";
-      GOPATH = "${homeDirectory}/.local/share/go"; # you can use xdg.cacheHome here
-      GOMODCACHE = "${homeDirectory}/.cache/go/pkg/mod"; # "
     };
-
     sessionPath = [
       "$HOME/.local/bin"
     ];
+  };
+
+  xdg.userDirs = {
+    createDirectories = true;
   };
 
   gtk = {
