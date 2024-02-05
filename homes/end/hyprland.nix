@@ -190,6 +190,7 @@ in
           "Super+Shift, L, exec, swaylock"
           "Control+Super, Slash, exec, pkill anyrun || anyrun"
           "Control+Super, T, exec, ~/.config/ags/scripts/color_generation/switchwall.sh"
+          "Control+Super, R, exec, killall ags ydotool; ags"
           "Super, Tab, exec, ags -t 'overview'"
           "Super, Slash, exec, ags -t 'cheatsheet'"
           "Super, B, exec, ags -t 'sideleft'"
@@ -304,7 +305,7 @@ in
         "Control+Super, R, exec, killall ags ydotool; ags &"
         "Control+Super+Alt, R, exec, hyprctl reload; killal;l ags ydotool; ags &"
       ];
-      bindir = [ "Super, Super_L, exec, pkill fuzzel || fuzzel" ];
+      bindir = [ "Super, Super_L, exec, ags -t 'overview'" ];
       binde = [
         "Super, Minus, splitratio, -0.1"
         "Super, Equal, splitratio, 0.1"
