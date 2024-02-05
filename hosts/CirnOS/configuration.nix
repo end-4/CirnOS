@@ -6,17 +6,14 @@
   # nix
   documentation.nixos.enable = false; # .desktop
   nixpkgs.config.allowUnfree = true;
-  nix = {
-    settings = {
-      experimental-features = "nix-command flakes";
-      auto-optimise-store = true;
-    };
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+    auto-optimise-store = true;
   };
 
   # virtualisation
   # programs.virt-manager.enable = true;
   # virtualisation = {
-  #   podman.enable = true;
   #   libvirtd.enable = true;
   # };
 
@@ -34,8 +31,6 @@
     envfs.enable = true;
     xserver = {
       enable = true;
-      xkb.layout = "us";
-      xkb.variant = "";
       desktopManager.gnome = {
         enable = true;
         extraGSettingsOverridePackages = [
