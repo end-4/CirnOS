@@ -3,9 +3,6 @@
 
   home.packages = with pkgs; with nodePackages_latest; with gnome; [
     sway
-    # colorscript
-    (import ./colorscript.nix { inherit pkgs; })
-
     # keyboard
     fcitx5-with-addons
     fcitx5-unikey
