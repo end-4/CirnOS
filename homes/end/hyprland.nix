@@ -177,15 +177,16 @@ in
           "Shift+Super+Alt, Q, exec, hyprctl kill"
           "Control+Shift+Alt, Delete, exec, pkill wlogout || wlogout -p layer-shell"
           "Control+Shift+Alt+Super, Delete, exec, systemctl poweroff"
-          "Super+Shift+Alt, S, exec, grim -g ${SLURP_COMMAND} - | swappy -f -"
-          "Super+Shift, S, exec, grim -g ${SLURP_COMMAND} - | wl-copy"
+          "Super+Shift+Alt, S, exec, grim -g "${SLURP_COMMAND}" - | swappy -f -"
+          "Super+Shift, S, exec, grim -g "${SLURP_COMMAND}" - | wl-copy"
           "Super+Alt, R, exec, ~/.config/ags/scripts/record-script.sh"
           "Control+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen"
           "Super+Shift+Alt, R, exec, ~/.config/ags/scripts/record-script.sh --fullscreen-sound"
           "Super+Shift, C, exec, hyprpicker -a"
           "Super, V, exec, pkill fuzzel || cliphist list | fuzzel --no-fuzzy --dmenu | cliphist decode | wl-copy"
           ''
-            Control+Super+Shift,S,exec,grim -g ${SLURP_COMMAND} "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"''
+            Control+Super+Shift,S,exec,grim -g ${SLURP_COMMAND} "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
+          ''
           "Super, L, exec, swaylock"
           "Super+Shift, L, exec, swaylock"
           "Control+Super, Slash, exec, pkill anyrun || anyrun"
@@ -302,8 +303,8 @@ in
         "Alt, L, exec, ydotool key 106:1 106:0"
       ];
       bindr = [
-        "Control+Super, R, exec, killall ags ydotool; ags &"
-        "Control+Super+Alt, R, exec, hyprctl reload; killal;l ags ydotool; ags &"
+        "Control+Super, R, exec, killall ags .ags-wrapped ydotool; ags &"
+        "Control+Super+Alt, R, exec, hyprctl reload; killall ags ydotool; ags &"
       ];
       bindir = [ "Super, Super_L, exec, ags -t 'overview'" ];
       binde = [

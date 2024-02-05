@@ -23,6 +23,7 @@
       webkitgtk
       python311Packages.material-color-utilities
       sassc
+      ydotool
     ];
   };
 }
