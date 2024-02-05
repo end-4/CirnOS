@@ -65,6 +65,7 @@
     playerctl
     swappy
     swaylock
+    swayidle
     slurp
     swww
     wayshot
