@@ -1,7 +1,8 @@
 let
   username = "end";
   homeDirectory = "/home/end";
-in {
+in
+{
   imports = [
     ./ags.nix
     ./anyrun.nix
@@ -32,17 +33,23 @@ in {
     ];
   };
 
-  gtk.gtk3.bookmarks = [
-    "file://${homeDirectory}/Downloads"
-    "file://${homeDirectory}/Documents"
-    "file://${homeDirectory}/Pictures"
-    "file://${homeDirectory}/Music"
-    "file://${homeDirectory}/Videos"
-    "file://${homeDirectory}/.config/ags"
-    "file://${homeDirectory}/.config/hypr"
-    "file://${homeDirectory}/Documents/GitHub"
-    "file:///mnt/Windows"
-  ];
+  gtk.gtk3 = {
+    bookmarks = [
+      "file://${homeDirectory}/Downloads"
+      "file://${homeDirectory}/Documents"
+      "file://${homeDirectory}/Pictures"
+      "file://${homeDirectory}/Music"
+      "file://${homeDirectory}/Videos"
+      "file://${homeDirectory}/.config"
+      "file://${homeDirectory}/.config/ags"
+      "file://${homeDirectory}/.config/hypr"
+      "file://${homeDirectory}/GitHub"
+      "file:///mnt/Windows"
+    ];
+    extraConfig = {
+      font = "Rubik 11";
+    };
+  };
 
   programs.home-manager.enable = true;
   home.stateVersion = "23.11"; # this must be the version at which you have started using the program
