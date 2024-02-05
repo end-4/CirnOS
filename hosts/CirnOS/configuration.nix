@@ -14,6 +14,7 @@
   # };
 
   services = {
+    envfs.enable = true;
     greetd = {
       enable = true;
       settings = {
@@ -24,7 +25,6 @@
       };
     };
     gvfs.enable = true;
-    envfs.enable = true;
     xserver = {
       enable = true;
       desktopManager.gnome = {
@@ -39,6 +39,8 @@
   security = {
     rtkit.enable = true;
     polkit.enable = true;
+    pam.services.swaylock = {};
+    pam.services.nautilus = {};
   };
 
   # dconf
