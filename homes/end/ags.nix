@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     sassc
     (python311.withPackages (p: [
-      p.python-pam
       p.material-color-utilities
     ]))
   ];

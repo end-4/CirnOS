@@ -1,8 +1,4 @@
-{ pkgs
-, username
-, config
-, ...
-}: {
+{ pkgs, username, config, ... }: {
   # nix
   documentation.nixos.enable = false; # .desktop
   nixpkgs.config.allowUnfree = true;
@@ -50,10 +46,11 @@
   # packages
   environment.systemPackages = with pkgs; [
     curl
+    zsh
     fish
     git
     gh
-    home-manager
+    # home-manager
     wget
     nixpkgs-fmt
     nixfmt
@@ -72,7 +69,8 @@
   # user
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "nixosvmtest" "networkmanager" "wheel" "audio" "video" "libvirtd" ];
+    shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "libvirtd" ];
   };
 
   # network
