@@ -18,6 +18,7 @@
       morewaita-icon-theme
       bibata-cursors
       rubik
+      lexend
       gnome.nautilus-python
       twitter-color-emoji
     ];

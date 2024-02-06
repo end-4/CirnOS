@@ -25,7 +25,7 @@ let
   });
   google-fonts = (pkgs.google-fonts.override {
     fonts = [
-      "Gabarito"
+      "Gabarito" "Lexend"
     ];
   });
 
