@@ -25,7 +25,7 @@ let
   });
   google-fonts = (pkgs.google-fonts.override {
     fonts = [
-      "Gabarito" "Lexend"
+      "Gabarito" "Lexend" "Chakra Petch"
     ];
   });
 
@@ -37,7 +37,6 @@ in
     packages = with pkgs; [
       # themes
       adw-gtk3
-      font-awesome
       material-symbols
       nerdfonts
       noto-fonts
