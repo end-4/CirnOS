@@ -6,8 +6,9 @@ in
   imports = [
     # Cachix
     ./cachix.nix
-    # Stuff
+    ## Dotfiles (manual)
     ./dotfiles.nix
+    # Stuff
     ./ags.nix
     ./anyrun.nix
     ./browser.nix
