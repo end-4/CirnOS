@@ -4,8 +4,8 @@
   home.packages = with pkgs; with nodePackages_latest; with gnome; with libsForQt5; [
     sway
     # keyboard
-    fcitx5-with-addons
-    fcitx5-unikey
+    # fcitx5-with-addons
+    # fcitx5-unikey
 
     # gui
     blueberry
