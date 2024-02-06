@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, ... }: {
   home = {
     sessionVariables.BROWSER = "firefox";
 
@@ -33,6 +33,5 @@
         @import "firefox-gnome-theme/userContent.css";
       '';
     };
-    nativeMessagingHosts.packages = [ pkgs.plasma5Packages.plasma-browser-integration ];
   };
 }
