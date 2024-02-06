@@ -1,6 +1,9 @@
 { inputs, ... }: {
   home = {
-    sessionVariables.BROWSER = "firefox";
+    sessionVariables = {
+      BROWSER = "firefox";
+      NIXOS_OZONE_WL = "1";
+    };
 
     file."firefox-gnome-theme" = {
       target = ".mozilla/firefox/default/chrome/firefox-gnome-theme";
