@@ -33,5 +33,6 @@
         @import "firefox-gnome-theme/userContent.css";
       '';
     };
+    nativeMessagingHosts.packages = [ pkgs.plasma5Packages.plasma-browser-integration ];
   };
 }
