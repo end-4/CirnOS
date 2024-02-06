@@ -53,6 +53,7 @@
     fuzzel
     grim
     hyprpicker
+    tesseract
     imagemagick
     pavucontrol
     playerctl
