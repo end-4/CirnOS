@@ -42,7 +42,7 @@
         @import "firefox-gnome-theme/userContent.css";
       '';
     };
-    nativeMessagingHosts.packages = {
+    nativeMessagingHosts = {
       packages = [ pkgs.libsForQt5.plasma-browser-integration ];
     };
   };
