@@ -26,6 +26,7 @@
       pywal
       sassc
       webkitgtk
+      webp-pixbuf-loader
       ydotool
     ];
   };

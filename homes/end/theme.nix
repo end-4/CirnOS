@@ -25,7 +25,10 @@ let
   });
   google-fonts = (pkgs.google-fonts.override {
     fonts = [
-      "Gabarito" "Lexend" "Chakra Petch"
+      # Sans
+      "Gabarito" "Lexend"
+      # Serif
+      "Chakra Petch" "Crimson Text"
     ];
   });
 
