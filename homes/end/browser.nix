@@ -45,5 +45,9 @@
         @import "firefox-gnome-theme/userContent.css";
       '';
     };
+    nativeMessagingHosts = [
+      pkgs.plasma-browser-integration
+      pkgs.browserpass
+    ];
   };
 }
