@@ -17,6 +17,7 @@
       icon-library
       dconf-editor
       qt5.qtimageformats
+      vlc
       yad
 
       # tools
