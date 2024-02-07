@@ -14,10 +14,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
+    impurity.url = "github:outfoxxed/impurity.nix";
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
@@ -26,7 +23,10 @@
     };
 
     ags.url = "github:Aylur/ags";
-
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
     gross = {
       url = "github:fufexan/gross";
       inputs.nixpkgs.follows = "nixpkgs";

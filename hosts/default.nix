@@ -1,4 +1,5 @@
-{self}: let
+{ self, impurity }:
+let
   inherit (self) inputs;
   inherit (inputs) nixpkgs home-manager;
 
@@ -12,18 +13,24 @@
     homeDir
     hm
   ];
-in {
+in
+{
   "CirnOS" = nixpkgs.lib.nixosSystem {
-    specialArgs = {inherit inputs;};
+    specialArgs = { inherit inputs; };
     modules =
       [
+        { # Impurity
+          imports = [ impurity.nixosModules.impurity ];
+          impurity.configRoot = self;
+        }
+
         ./CirnOS # this imports your entire host configuration in one swoop
 
         # this part is basically the same as putting configuration in your
         # configuration.nix, but is done on the topmost level for your convenience
         {
           networking.hostName = "CirnOS";
-          _module.args = {username = "end";};
+          _module.args = { username = "end"; };
         }
       ]
       ++ homes; # imports the home-manager related configurations
