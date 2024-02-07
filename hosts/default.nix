@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, impurity, ... }:
 let
   inherit (self) inputs;
   inherit (inputs) nixpkgs home-manager;
