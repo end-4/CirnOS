@@ -3,6 +3,7 @@ let
   editor = "code.desktop";
   file-manager = "org.gnome.Nautilus.desktop";
   image-viewer = "org.gnome.Loupe.desktop";
+  image-editor = "org.kde.kolourpaint";
   torrent = "transmission-gtk.desktop";
 in {
   xdg.mimeApps = rec {
@@ -20,19 +21,19 @@ in {
       "application/pdf" = browser;
       "application/x-shellscript" = editor;
 
-      "image/jpeg" = image-viewer;
+      "image/jpeg" = image-editor;
       "image/bmp" = image-viewer;
       "image/gif" = image-viewer;
       "image/jpg" = image-viewer;
       "image/pjpeg" = image-viewer;
-      "image/png" = image-viewer;
+      "image/png" = image-editor;
       "image/tiff" = image-viewer;
-      "image/webp" = image-viewer;
+      "image/webp" = image-editor;
       "image/x-bmp" = image-viewer;
       "image/x-gray" = image-viewer;
       "image/x-icb" = image-viewer;
-      "image/x-ico" = image-viewer;
-      "image/x-png" = image-viewer;
+      "image/x-ico" = image-editor;
+      "image/x-png" = image-editor;
       "image/x-portable-anymap" = image-viewer;
       "image/x-portable-bitmap" = image-viewer;
       "image/x-portable-graymap" = image-viewer;
