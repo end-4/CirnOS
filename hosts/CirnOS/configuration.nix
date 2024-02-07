@@ -48,9 +48,22 @@
     zsh.enable = true;
     fish.enable = true;
     dconf.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    };
     firefox = {
       enable = true;
       nativeMessagingHosts.packages = [ pkgs.plasma5Packages.plasma-browser-integration ];
+    };
+    # Run dynamically linked stuff
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        # Add any missing dynamic libraries for unpackaged programs
+        # here, NOT in environment.systemPackages
+      ];
     };
   };
   # packages
