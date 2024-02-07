@@ -1,3 +1,4 @@
+# idk got this from matostitos
 {...}: {
   nix = {
     settings = {

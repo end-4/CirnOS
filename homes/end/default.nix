@@ -5,7 +5,7 @@ in
 { pkgs, ... }: {
   imports = [
     # Cachix
-    ./cachix.nix
+    # ./cachix.nix
     ## Dotfiles (manual)
     ./dotfiles.nix
     # Stuff

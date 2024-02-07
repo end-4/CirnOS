@@ -19,8 +19,8 @@
     prime = {
       offload.enable = true;
       offload.enableOffloadCmd = true;
-      nvidiaBusId = "PCI:1:0:0";
-      amdgpuBusId = "PCI:6:0:0";
+      nvidiaBusId = "PCI:3:0:0";
+      amdgpuBusId = "PCI:5:0:0";
     };
 
     modesetting.enable = true;
