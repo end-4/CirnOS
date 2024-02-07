@@ -19,10 +19,10 @@ in
     specialArgs = { inherit inputs; };
     modules =
       [
-        { # Impurity
-          imports = [ impurity.nixosModules.impurity ];
-          impurity.configRoot = self;
-        }
+        # { # Impurity
+        #   imports = [ impurity.nixosModules.impurity ];
+        #   impurity.configRoot = self;
+        # }
 
         ./CirnOS # this imports your entire host configuration in one swoop
 
