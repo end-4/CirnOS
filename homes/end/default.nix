@@ -26,8 +26,6 @@ in
     sessionVariables = {
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_INSECURE = "1";
-      # Force electron apps use Wayland
-      NIXOS_OZONE_WL = "1";
     };
     sessionPath = [
       "$HOME/.local/bin"

@@ -36,6 +36,7 @@ in
   home = {
     packages = with pkgs; [
       # themes
+      adwaita-qt6
       adw-gtk3
       material-symbols
       nerdfonts
