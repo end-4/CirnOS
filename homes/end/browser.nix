@@ -13,13 +13,6 @@
     ];
   };
 
-  programs.chromium = {
-    enable = true;
-    extensions = [
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-    ];
-  };
-
   programs.firefox = {
     enable = true;
     profiles.default = {
