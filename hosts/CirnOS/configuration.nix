@@ -39,7 +39,7 @@
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.swaylock = {};
+    pam.services.swaylock = { };
     # pam.services.swaylock-effects = {};
   };
 
@@ -51,17 +51,20 @@
     firefox.nativeMessagingHosts.packages = [ pkgs.plasma5Packages.plasma-browser-integration ];
   };
   # packages
-  environment.systemPackages = with pkgs; [
-    curl
-    zsh
-    fish
-    git
-    gh
-    # home-manager
-    wget
-    nixpkgs-fmt
-    nixfmt
-  ];
+  environment = {
+    localBinInPath = true;
+    systemPackages = with pkgs; [
+      curl
+      zsh
+      fish
+      git
+      gh
+      # home-manager
+      wget
+      nixpkgs-fmt
+      nixfmt
+    ];
+  };
 
   # ZRAM
   zramSwap.enable = true;
