@@ -6,6 +6,7 @@
 
   home.packages = with pkgs; [
     ollama
+    pywal
     sassc
     (python311.withPackages (p: [
       p.material-color-utilities
@@ -22,6 +23,7 @@
       gtksourceview4
       ollama
       python311Packages.material-color-utilities
+      pywal
       sassc
       webkitgtk
       ydotool
