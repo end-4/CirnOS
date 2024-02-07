@@ -1,6 +1,6 @@
 { self, ... }:
 let
-  inherit (self) inputs impurity;
+  inherit (self) inputs;
   inherit (inputs) nixpkgs home-manager;
 
   # set the entrypoint for home-manager configurations
