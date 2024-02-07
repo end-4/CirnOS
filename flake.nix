@@ -1,11 +1,11 @@
 {
   description = "Home Manager and NixOS configuration of Aylur";
 
-  outputs = { self, impurity, ... }: {
+  outputs = { self, imipurity, ... }: {
     # editing flake.nix triggers certain utilities such as direnv
     # to reload - editing host configurations do not require a direnv
     # relod, so lets move hosts out of the way
-    nixosConfigurations = import ./hosts { inherit self; };
+    nixosConfigurations = import ./hosts { inherit self impurity; };
   };
 
   inputs = {
