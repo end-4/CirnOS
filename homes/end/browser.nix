@@ -8,6 +8,9 @@
       target = ".mozilla/firefox/default/chrome/firefox-gnome-theme";
       source = inputs.firefox-gnome-theme;
     };
+    packages = with pkgs; [
+      libsForQt5.plasma-browser-integration
+    ];
   };
 
   programs.chromium = {
@@ -41,9 +44,6 @@
       userContent = ''
         @import "firefox-gnome-theme/userContent.css";
       '';
-    };
-    nativeMessagingHosts = {
-      packages = [ pkgs.libsForQt5.plasma-browser-integration ];
     };
   };
 }

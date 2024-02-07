@@ -48,7 +48,10 @@
     zsh.enable = true;
     fish.enable = true;
     dconf.enable = true;
-    firefox.nativeMessagingHosts.packages = [ pkgs.plasma5Packages.plasma-browser-integration ];
+    firefox = {
+      enable = true;
+      nativeMessagingHosts.packages = [ pkgs.plasma5Packages.plasma-browser-integration ];
+    };
   };
   # packages
   environment = {
