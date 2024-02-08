@@ -127,7 +127,18 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    # kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPatches = [{
+      name = "enable RT_FULL";
+      patch = null;
+      extraConfig = ''
+        PREEMPT y
+        PREEMPT_BUILD y
+        PREEMPT_VOLUNTARY n
+        PREEMPT_COUNT y
+        PREEMPTION y
+      '';
+    }];
     # extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
     # kernelModules = [ "acpi_call" ];
 
