@@ -359,7 +359,9 @@ in
         "noanim, sideright"
         "noanim, sideleft"
       ];
-
+      source = [
+        "./colors.conf"
+      ];
     };
   };
 }
