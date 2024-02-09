@@ -134,7 +134,6 @@
       patch = null;
       # TODO: add realtime patch: PREEMPT_RT y
       extraConfig = ''
-        PREEMPT_RT y
         PREEMPT y
         PREEMPT_BUILD y
         PREEMPT_VOLUNTARY n

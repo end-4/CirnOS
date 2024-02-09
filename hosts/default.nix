@@ -24,6 +24,7 @@ in
           # Impurity
           imports = [ impurity.nixosModules.impurity ];
           impurity.configRoot = self;
+          impurity.enable = true;
         }
 
         ./CirnOS # this imports your entire host configuration in one swoop
