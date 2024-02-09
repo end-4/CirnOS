@@ -13,6 +13,7 @@ let
     homeDir
     hm
   ];
+  impurity = inputs.impurity;
 in
 {
   "CirnOS" = nixpkgs.lib.nixosSystem {

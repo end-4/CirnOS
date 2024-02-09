@@ -1,7 +1,8 @@
-{ config, inputs, pkgs, ... }: let 
-  symlink = config.lib.file.mkOutOfStoreSymlink;
-in {
-  # home.file = {
-  #   ".config/starship.toml".source = symlink ./.config/starship.toml;
-  # };
+{ config, impurity, inputs, pkgs, ... }: {
+  # imports = [ impurity.nixosModules.impurity ];
+
+  home.file = let symlink = impurity.link; in {
+    ".config/starship.toml".source = symlink ./.config/starship.toml;
+    
+  };
 }
