@@ -143,7 +143,6 @@
     }];
     # extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
     # kernelModules = [ "acpi_call" ];
-
     # make 3.5mm jack work
     # extraModprobeConfig = ''
     #   options snd_hda_intel model=headset-mode

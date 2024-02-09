@@ -2,7 +2,7 @@ let
   username = "end";
   homeDirectory = "/home/end";
 in
-{ pkgs, ... }: {
+{ pkgs, impurity, ... }: {
   imports = [
     # Cachix
     # ./cachix.nix
@@ -34,6 +34,9 @@ in
 
   xdg.userDirs = {
     createDirectories = true;
+  };
+  xdg.configFile = let symlink = impurity.link; in {
+    "starship.toml".source = symlink ./.config/starship.toml;
   };
 
   gtk = {

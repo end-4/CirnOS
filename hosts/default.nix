@@ -20,7 +20,8 @@ in
     specialArgs = { inherit inputs; };
     modules =
       [
-        { # Impurity
+        {
+          # Impurity
           imports = [ impurity.nixosModules.impurity ];
           impurity.configRoot = self;
           impurity.enable = true;
