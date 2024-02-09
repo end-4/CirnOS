@@ -7,7 +7,6 @@
     # reload, so lets move hosts out of the way
     nixosConfigurations = import ./hosts { inherit self; };
   };
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {

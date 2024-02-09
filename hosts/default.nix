@@ -24,7 +24,6 @@ in
           # Impurity
           imports = [ impurity.nixosModules.impurity ];
           impurity.configRoot = self;
-          impurity.enable = true;
         }
 
         ./CirnOS # this imports your entire host configuration in one swoop
@@ -38,4 +37,5 @@ in
       ]
       ++ homes; # imports the home-manager related configurations
   };
+  "CirnOS-impure" = self.nixosConfigurations.msi.extendModules { modules = [{ impurity.enable = true; }]; };
 }
