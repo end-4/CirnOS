@@ -131,6 +131,7 @@
     kernelPatches = [{
       name = "enable RT_FULL";
       patch = null;
+      # TODO: add realtime patch: PREEMPT_RT y
       extraConfig = ''
         PREEMPT y
         PREEMPT_BUILD y
