@@ -27,6 +27,7 @@
     gvfs.enable = true;
     xserver = {
       enable = true;
+      displayManager.startx.enable = true;
       desktopManager.gnome = {
         enable = true;
         extraGSettingsOverridePackages = [
