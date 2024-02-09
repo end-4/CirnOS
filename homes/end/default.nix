@@ -35,8 +35,8 @@ in
   xdg.userDirs = {
     createDirectories = true;
   };
-  xdg.configFile = let symlink = impurity.link; in {
-    "starship.toml".source = symlink ./.config/starship.toml;
+  xdg.configFile = {
+    "starship.toml".source = impurity.link ./.config/starship.toml;
   };
 
   gtk = {
