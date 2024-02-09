@@ -45,7 +45,7 @@ in
       ];
       monitor = [ ",preferred,auto,1" ];
       "exec-once" = [
-        "ags -b hypr"
+        "ags"
         "swww kill; swww init"
         "fcitx5"
         ''

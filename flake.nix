@@ -4,7 +4,7 @@
   outputs = { self, impurity, ... }: {
     # editing flake.nix triggers certain utilities such as direnv
     # to reload - editing host configurations do not require a direnv
-    # relod, so lets move hosts out of the way
+    # reload, so lets move hosts out of the way
     nixosConfigurations = import ./hosts { inherit self; };
   };
 

@@ -40,6 +40,7 @@
       foot
       kitty
       starship
+      showmethekey
       vscode
       ydotool
 
