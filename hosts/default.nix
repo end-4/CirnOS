@@ -38,5 +38,5 @@ in
       ]
       ++ homes; # imports the home-manager related configurations
   };
-  "CirnOS-impure" = self.nixosConfigurations.msi.extendModules { modules = [{ impurity.enable = true; }]; };
+  "CirnOS-impure" = self.nixosConfigurations."CirnOS".extendModules { modules = [{ impurity.enable = true; }]; };
 }
