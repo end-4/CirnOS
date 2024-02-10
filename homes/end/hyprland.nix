@@ -93,7 +93,7 @@ in
           disable_while_typing = true;
           clickfinger_behavior = true;
           scroll_factor = 0.5;
-        };
+        }; 
 
         # special_fallthrough = true   # only in new hyprland versions. but they're hella fucked
         follow_mouse = 1;
