@@ -1,4 +1,4 @@
-* {
+*:not(popover) {
   all: unset; }
 
 @keyframes flyin-top {
@@ -488,6 +488,26 @@ tooltip {
   background-color: #3d3234;
   color: #d6c1c4;
   border: 1px solid #d6c1c4; }
+
+popover {
+  border-top: 1px solid rgba(63, 56, 57, 0.121);
+  border-left: 1px solid rgba(63, 56, 57, 0.121);
+  border-right: 1px solid rgba(49, 42, 43, 0.1105);
+  border-bottom: 1px solid rgba(49, 42, 43, 0.1105);
+  padding: 0.681rem;
+  background: #3d3234;
+  color: #d6c1c4;
+  border-radius: 1.159rem;
+  -gtk-outline-radius: 1.159rem;
+  animation-name: appear;
+  animation-duration: 40ms;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1; }
+
+box.emoji-toolbar > * {
+  background-color: red;
+  padding: 0.273rem 0.341rem;
+  border: 0.136rem solid transparent; }
 
 .configtoggle-box {
   padding: 0.205rem 0.341rem;
