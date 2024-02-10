@@ -14,6 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impurity.url = "github:outfoxxed/impurity.nix";
+    thorium.url = "github:end-4/nix-thorium";
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
