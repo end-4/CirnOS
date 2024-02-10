@@ -504,11 +504,6 @@ popover {
   animation-timing-function: ease-out;
   animation-iteration-count: 1; }
 
-box.emoji-toolbar > * {
-  background-color: red;
-  padding: 0.273rem 0.341rem;
-  border: 0.136rem solid transparent; }
-
 .configtoggle-box {
   padding: 0.205rem 0.341rem;
   border: 0.136rem solid transparent; }
