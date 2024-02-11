@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, thorium, ... }:
 let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
@@ -15,7 +15,7 @@ in
 {
   home.packages = [
     launcher
-    # pkgs.thorium
+    thorium
   ];
 
   xdg.desktopEntries."org.gnome.Settings" = {

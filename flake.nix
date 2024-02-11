@@ -1,7 +1,7 @@
 {
-  description = "Home Manager and NixOS configuration of Aylur";
+  description = "end_4's NixOS flake";
 
-  outputs = { self, impurity, ... }: {
+  outputs = { self, impurity, thorium, ... }: {
     # editing flake.nix triggers certain utilities such as direnv
     # to reload - editing host configurations do not require a direnv
     # reload, so lets move hosts out of the way

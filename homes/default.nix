@@ -1,4 +1,4 @@
-{ self, impurity, inputs, ... }: {
+{ self, impurity, inputs, thorium, ... }: {
   home-manager = {
     # tell home-manager to be as verbose as possible
     verbose = true;
@@ -19,7 +19,7 @@
     # for reference, the config argument in nixos can be accessed
     # in home-manager through osConfig without us passing it
     extraSpecialArgs = {
-      inherit impurity inputs self;
+      inherit inputs self impurity thorium;
     };
 
     # per-user Home Manager configuration
