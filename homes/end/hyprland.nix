@@ -1,4 +1,4 @@
-{ inputs, pkgs, thorium, ... }:
+{ inputs, pkgs, ... }:
 let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
@@ -15,7 +15,7 @@ in
 {
   home.packages = [
     launcher
-    thorium
+    
   ];
 
   xdg.desktopEntries."org.gnome.Settings" = {
@@ -308,8 +308,8 @@ in
       bindle = [
         ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86MonBrightnessUp, exec, ags run-js 'brightness.screen_value += 0.05;'"
-        ",XF86MonBrightnessDown, exec, ags run-js 'brightness.screen_value -= 0.05;'"
+        ",XF86MonBrightnessUp, exec, ags run-js 'brightness.screen_value += 0.05;'; ags run-js 'indicator.popup(1);'"
+        ",XF86MonBrightnessDown, exec, ags run-js 'brightness.screen_value -= 0.05;'; ags run-js 'indicator.popup(1);'"
         ",XF86AudioRaiseVolume, exec, ags run-js 'indicator.popup(1);'"
         ",XF86AudioLowerVolume, exec, ags run-js 'indicator.popup(1);'"
         ",XF86MonBrightnessUp, exec, ags run-js 'indicator.popup(1);'"
