@@ -15,7 +15,7 @@ in
 {
   home.packages = [
     launcher
-    
+
   ];
 
   xdg.desktopEntries."org.gnome.Settings" = {
@@ -308,10 +308,10 @@ in
       bindle = [
         ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86MonBrightnessUp, exec, ags run-js 'brightness.screen_value += 0.05;'; ags run-js 'indicator.popup(1);'"
-        ",XF86MonBrightnessDown, exec, ags run-js 'brightness.screen_value -= 0.05;'; ags run-js 'indicator.popup(1);'"
-        ",XF86AudioRaiseVolume, exec, ags run-js 'indicator.popup(1);'"
-        ",XF86AudioLowerVolume, exec, ags run-js 'indicator.popup(1);'"
+        ",XF86MonBrightnessUp, exec, ags run-js 'brightness.screen_value += 0.05;indicator.popup(1);'"
+        ",XF86MonBrightnessDown, exec, ags run-js 'brightness.screen_value -= 0.05;indicator.popup(1);'"
+        # ",XF86AudioRaiseVolume, exec, ags run-js 'indicator.popup(1);'"
+        # ",XF86AudioLowerVolume, exec, ags run-js 'indicator.popup(1);'"
         ",XF86MonBrightnessUp, exec, ags run-js 'indicator.popup(1);'"
         ",XF86MonBrightnessDown, exec, ags run-js 'indicator.popup(1);'"
         "Alt, I, exec, ydotool key 103:1 103:0 "
