@@ -827,7 +827,8 @@ popover {
   -gtk-outline-radius: 9999px;
   transition: 300ms cubic-bezier(0, 0.55, 0.45, 1);
   min-height: 1.032rem;
-  min-width: 1.032rem; }
+  min-width: 1.032rem;
+  font-size: 1.032rem; }
 
 .bar-statusicons {
   border-radius: 9999px;
@@ -1004,7 +1005,8 @@ popover {
 
 .dock-app-icon {
   min-width: 3.409rem;
-  min-height: 3.409rem; }
+  min-height: 3.409rem;
+  font-size: 3.409rem; }
 
 .dock-separator {
   min-width: 0.068rem;
@@ -1732,7 +1734,8 @@ popover {
   border-radius: 1.159rem;
   -gtk-outline-radius: 1.159rem;
   padding: 0.341rem;
-  background-color: rgba(32, 28, 22, 0.31); }
+  background-color: rgba(58, 53, 43, 0.45);
+  padding: 0.682rem; }
 
 .sidebar-module-btn-arrow {
   border-radius: 9999px;
@@ -1754,6 +1757,7 @@ popover {
   -gtk-outline-radius: 9999px;
   min-width: 2.182rem;
   min-height: 2.182rem;
+  font-size: 1.406rem;
   color: #e8e1d8; }
 
 .sidebar-chat-apiswitcher-icon-enabled {
@@ -1902,10 +1906,10 @@ popover {
   border-radius: 9999px;
   -gtk-outline-radius: 9999px;
   transition: 300ms cubic-bezier(0, 0.55, 0.45, 1);
+  font-family: "Material Symbols Rounded", "MaterialSymbolsRounded", "Material Symbols Outlined", "Material Symbols Sharp";
   min-height: 4.773rem;
   min-width: 4.773rem;
-  font-family: "Material Symbols Rounded", "MaterialSymbolsRounded", "Material Symbols Outlined", "Material Symbols Sharp";
-  font-size: 2.727rem;
+  font-size: 3.076rem;
   background-color: #e8e1d8;
   color: #100e0a; }
 
@@ -2129,7 +2133,8 @@ popover {
   border-radius: 9999px;
   -gtk-outline-radius: 9999px;
   min-width: 3.409rem;
-  min-height: 3.409rem; }
+  min-height: 3.409rem;
+  font-size: 3.409rem; }
 
 .notif-icon-material {
   background-color: #514529;

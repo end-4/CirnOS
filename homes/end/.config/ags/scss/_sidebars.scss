@@ -445,7 +445,8 @@ $onChatgpt: $onPrimary;
 .sidebar-module {
     @include normal-rounding;
     @include group-padding;
-    background-color: $t_surface;
+    background-color: $l_l_t_surfaceVariant;
+    padding: 0.682rem;
 }
 
 .sidebar-module-btn-arrow {
@@ -467,6 +468,7 @@ $onChatgpt: $onPrimary;
     @include full-rounding;
     min-width: 2.182rem;
     min-height: 2.182rem;
+    font-size: 1.406rem;
     color: $onSurface;
 }
 
@@ -642,10 +644,10 @@ $onChatgpt: $onPrimary;
 .sidebar-chat-welcome-logo {
     @include full-rounding;
     @include element_decel;
+    @include icon-material;
     min-height: 4.773rem;
     min-width: 4.773rem;
-    @include icon-material;
-    font-size: 2.727rem;
+    font-size: 3.076rem;
     background-color: $onBackground;
     color: $background;
 }
