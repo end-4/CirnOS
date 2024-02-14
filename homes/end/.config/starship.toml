@@ -26,7 +26,7 @@ disabled = true
 [git_branch]
 style = "bg: green"
 symbol = "󰘬"
-truncation_length = 4
+truncation_length = 20
 truncation_symbol = ""
 format = "• [](bold fg:green)[$symbol $branch(:$remote_branch)](fg:black bg:green)[ ](bold fg:green)"
 
@@ -81,7 +81,7 @@ show_always = true
 home_symbol = "  "
 read_only = "  "
 style = "bg:blue fg:black"
-truncation_length = 6
+truncation_length = 30
 truncation_symbol = "••/"
 format = '[](bold fg:blue)[$path ]($style)[](bold fg:blue)'
 
@@ -93,6 +93,8 @@ format = '[](bold fg:blue)[$path ]($style)[](bold fg:blue)'
 "Music" = " 󰎈 "
 "Pictures" = "  "
 "Videos" = "  "
+"hyprland" = "  "
+"GitHub" = "  "
 
 [cmd_duration]
 min_time = 0
