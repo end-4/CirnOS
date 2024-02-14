@@ -1741,9 +1741,21 @@ popover {
   border-radius: 9999px;
   -gtk-outline-radius: 9999px;
   font-family: "Material Symbols Rounded", "MaterialSymbolsRounded", "Material Symbols Outlined", "Material Symbols Sharp";
-  background-color: rgba(58, 53, 43, 0.31);
+  background-color: rgba(58, 53, 43, 0.45);
   min-width: 1.705rem;
   min-height: 1.705rem; }
+  .sidebar-module-btn-arrow:hover {
+    background-color: rgba(128, 128, 128, 0.3); }
+
+.sidebar-module-scripts-button {
+  border-radius: 9999px;
+  -gtk-outline-radius: 9999px;
+  font-family: "Material Symbols Rounded", "MaterialSymbolsRounded", "Material Symbols Outlined", "Material Symbols Sharp";
+  background-color: rgba(58, 53, 43, 0.45);
+  min-width: 1.705rem;
+  min-height: 1.705rem; }
+  .sidebar-module-scripts-button:hover {
+    background-color: rgba(128, 128, 128, 0.3); }
 
 .sidebar-chat-apiswitcher {
   border-radius: 9999px;

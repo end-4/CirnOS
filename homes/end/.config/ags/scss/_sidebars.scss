@@ -452,9 +452,23 @@ $onChatgpt: $onPrimary;
 .sidebar-module-btn-arrow {
     @include full-rounding;
     @include icon-material;
-    background-color: $t_surfaceVariant;
+    background-color: $l_l_t_surfaceVariant;
     min-width: 1.705rem;
     min-height: 1.705rem;
+    &:hover {
+        background-color: $hovercolor;
+    }
+}
+
+.sidebar-module-scripts-button {
+    @include full-rounding;
+    @include icon-material;
+    background-color: $l_l_t_surfaceVariant;
+    min-width: 1.705rem;
+    min-height: 1.705rem;
+    &:hover {
+        background-color: $hovercolor;
+    }
 }
 
 .sidebar-chat-apiswitcher {
