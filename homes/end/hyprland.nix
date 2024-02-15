@@ -13,9 +13,9 @@ let
   '';
 in
 {
-  home.packages = [
+  home.packages = with pkgs; [
     launcher
-
+    adoptopenjdk-jre-bin
   ];
 
   xdg.desktopEntries."org.gnome.Settings" = {
