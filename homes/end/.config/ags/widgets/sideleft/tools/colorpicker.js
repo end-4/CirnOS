@@ -1,6 +1,5 @@
 // TODO: Make selection update when entry changes
 const { Gtk } = imports.gi;
-import Cairo from 'gi://cairo?version=1.0';
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import Variable from 'resource:///com/github/Aylur/ags/variable.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
@@ -16,8 +15,6 @@ import { ColorPickerSelection, hslToHex, hslToRgbValues, hexToHSL } from './colo
 const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 export default () => {
-    const dummyRegion = new Cairo.Region();
-    const enableClickthrough = (self) => self.input_shape_combine_region(dummyRegion);
     const selectedColor = new ColorPickerSelection();
     function shouldUseBlackColor() {
         return ((selectedColor.xAxis < 40 || (45 <= selectedColor.hue && selectedColor.hue <= 195)) &&
@@ -25,15 +22,12 @@ export default () => {
     }
     const colorBlack = 'rgba(0,0,0,0.9)';
     const colorWhite = 'rgba(255,255,255,0.9)';
-    const colorRed = '#be2222';
-    const colorGreen = '#51b932';
-    const colorBlue = '#2f87c2';
     const hueRange = Box({
         homogeneous: true,
         className: 'sidebar-module-colorpicker-wrapper',
         children: [Box({
             className: 'sidebar-module-colorpicker-hue',
-            css: `background: linear-gradient(to bottom, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);`,
+            css: `background: linear-gradient(to bottom, #ff6666, #ffff66, #66dd66, #66ffff, #6666ff, #ff66ff, #ff6666);`,
         })],
     });
     const hueSlider = Box({
@@ -195,7 +189,7 @@ export default () => {
             .hook(selectedColor, self.attribute.update, 'assigned')
         ,
     });
-    const resultHex = Box({
+    const ResultBox = ({ colorSystemName, updateCallback, copyCallback }) => Box({
         children: [
             Box({
                 vertical: true,
@@ -204,82 +198,34 @@ export default () => {
                     Label({
                         xalign: 0,
                         className: 'txt-tiny',
-                        label: 'Hex',
+                        label: colorSystemName,
                     }),
                     Overlay({
                         child: Entry({
                             widthChars: 10,
                             className: 'txt-small techfont',
-                            // css: 'color: transparent;',
                             attribute: {
                                 id: 0,
-                                update: (self, id) => {
-                                    if (id && self.attribute.id === id) return;
-                                    self.text = hslToHex(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100));
-                                }
+                                update: updateCallback,
                             },
                             setup: (self) => self
                                 .hook(selectedColor, self.attribute.update, 'sl')
                                 .hook(selectedColor, self.attribute.update, 'hue')
                                 .hook(selectedColor, self.attribute.update, 'assigned')
-                                // .on('activate', (self) => {
-                                //     const newColor = self.text;
-                                //     if (newColor.length != 7) return;
-                                //     selectedColor.setColorFromHex(self.text, self.attribute.id);
-                                // })
+                            // .on('activate', (self) => {
+                            //     const newColor = self.text;
+                            //     if (newColor.length != 7) return;
+                            //     selectedColor.setColorFromHex(self.text, self.attribute.id);
+                            // })
                             ,
                         }),
-                        // overlays: [Box({// Overlay literal red/green/blue numbers
-                        //     // setup: (self) => Utils.timeout(5000, () => enableClickthrough(self)),
-                        //     setup: enableClickthrough,
-                        //     children: [
-                        //         Label({
-                        //             xalign: 0,
-                        //             className: 'txt-small',
-                        //             label: '#',
-                        //         }),
-                        //         Label({
-                        //             xalign: 0, className: 'txt-small', css: `color: ${colorRed};`,
-                        //             attribute: {
-                        //                 updateColor: (self) => {
-                        //                     self.label = hslToHex(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100)).slice(1, 3);
-                        //                 }
-                        //             },
-                        //             setup: (self) => {
-                        //                 self.hook(selectedColor, (self) => self.attribute.updateColor(self))
-                        //             },
-                        //         }),
-                        //         Label({
-                        //             xalign: 0, className: 'txt-small', css: `color: ${colorGreen};`,
-                        //             attribute: {
-                        //                 updateColor: (self) => {
-                        //                     self.label = hslToHex(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100)).slice(3, 5);
-                        //                 }
-                        //             },
-                        //             setup: (self) => {
-                        //                 self.hook(selectedColor, (self) => self.attribute.updateColor(self))
-                        //             },
-                        //         }),
-                        //         Label({
-                        //             xalign: 0, className: 'txt-small', css: `color: ${colorBlue};`,
-                        //             attribute: {
-                        //                 updateColor: (self) => {
-                        //                     self.label = hslToHex(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100)).slice(5, 7);
-                        //                 }
-                        //             },
-                        //             setup: (self) => {
-                        //                 self.hook(selectedColor, (self) => self.attribute.updateColor(self))
-                        //             },
-                        //         }),
-                        //     ]
-                        // })]
                     })
                 ]
             }),
             Button({
                 child: MaterialIcon('content_copy', 'norm'),
                 onClicked: (self) => {
-                    Utils.execAsync(['wl-copy', `${hslToHex(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100))}`])
+                    copyCallback(self);
                     self.child.label = 'done';
                     Utils.timeout(1000, () => self.child.label = 'content_copy');
                 },
@@ -287,87 +233,30 @@ export default () => {
             })
         ]
     });
-    const resultRgb = Box({
-        children: [
-            Box({
-                vertical: true,
-                hexpand: true,
-                children: [
-                    Label({
-                        xalign: 0,
-                        className: 'txt-tiny',
-                        label: 'RGB',
-                    }),
-                    Entry({
-                        widthChars: 10,
-                        className: 'txt-small techfont',
-                        attribute: {
-                            id: 1,
-                            update: (self, id) => {
-                                if (id && self.attribute.id === id) return;
-                                self.text = hslToRgbValues(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100));
-                            }
-                        },
-                        setup: (self) => self
-                            .hook(selectedColor, self.attribute.update, 'sl')
-                            .hook(selectedColor, self.attribute.update, 'hue')
-                            .hook(selectedColor, self.attribute.update, 'assigned')
-                        ,
-                    })
-                ]
-            }),
-            Button({
-                child: MaterialIcon('content_copy', 'norm'),
-                onClicked: (self) => {
-                    Utils.execAsync(['wl-copy', `rgb(${hslToRgbValues(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100))})`])
-                    self.child.label = 'done';
-                    Utils.timeout(1000, () => self.child.label = 'content_copy');
-                },
-                setup: setupCursorHover,
-            })
-        ]
-    });
-    const resultHsl = Box({
-        children: [
-            Box({
-                vertical: true,
-                hexpand: true,
-                children: [
-                    Label({
-                        xalign: 0,
-                        className: 'txt-tiny',
-                        label: 'HSL',
-                    }),
-                    Entry({
-                        widthChars: 10,
-                        className: 'txt-small techfont',
-                        attribute: {
-                            id: 2,
-                            update: (self, id) => {
-                                if (id && self.attribute.id === id) return;
-                                self.text = `${selectedColor.hue},${selectedColor.xAxis}%,${Math.round(selectedColor.yAxis / (1 + selectedColor.xAxis / 100))}%`;
-                            }
-                        },
-                        setup: (self) => self
-                            .hook(selectedColor, self.attribute.update, 'sl')
-                            .hook(selectedColor, self.attribute.update, 'hue')
-                            .hook(selectedColor, self.attribute.update, 'assigned')
-                        ,
-
-                    })
-                ]
-            }),
-            Button({
-                child: MaterialIcon('content_copy', 'norm'),
-                onClicked: (self) => {
-                    Utils.execAsync(['wl-copy', `hsl(${selectedColor.hue},${selectedColor.xAxis}%,${Math.round(selectedColor.yAxis / (1 + selectedColor.xAxis / 100))}%)`])
-                    self.child.label = 'done';
-                    Utils.timeout(1000, () => self.child.label = 'content_copy');
-                },
-                setup: setupCursorHover,
-            })
-        ]
-    });
+    const resultHex = ResultBox({
+        colorSystemName: 'Hex',
+        updateCallback: (self, id) => {
+            if (id && self.attribute.id === id) return;
+            self.text = hslToHex(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100));
+        },
+        copyCallback: () => Utils.execAsync(['wl-copy', `${hslToHex(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100))}`]),
+    })
+    const resultRgb = ResultBox({
+        colorSystemName: 'RGB',
+        updateCallback: (self, id) => {
+            if (id && self.attribute.id === id) return;
+            self.text = hslToRgbValues(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100));
+        },
+        copyCallback: () => Utils.execAsync(['wl-copy', `rgb(${hslToRgbValues(selectedColor.hue, selectedColor.xAxis, selectedColor.yAxis / (1 + selectedColor.xAxis / 100))})`]),
+    })
+    const resultHsl = ResultBox({
+        colorSystemName: 'HSL',
+        updateCallback: (self, id) => {
+            if (id && self.attribute.id === id) return;
+            self.text = `${selectedColor.hue},${selectedColor.xAxis}%,${Math.round(selectedColor.yAxis / (1 + selectedColor.xAxis / 100))}%`;
+        },
+        copyCallback: () => Utils.execAsync(['wl-copy', `hsl(${selectedColor.hue},${selectedColor.xAxis}%,${Math.round(selectedColor.yAxis / (1 + selectedColor.xAxis / 100))}%)`]),
+    })
     const result = Box({
         className: 'sidebar-module-colorpicker-result-area spacing-v-5 txt',
         hexpand: true,
